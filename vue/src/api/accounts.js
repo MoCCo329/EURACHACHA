@@ -1,6 +1,6 @@
-import api from './api'
+import api from "./api"
 
-const END_POINT = 'accounts'  // 이름 이유
+const END_POINT = "accounts"  // 이름 이유
 
 export default {
   login(data) {

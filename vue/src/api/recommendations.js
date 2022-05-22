@@ -1,6 +1,6 @@
-import api from './api'
+import api from "./api"
 
-const END_POINT = 'recommendations'
+const END_POINT = "recommendations"
 
 export default {
   intersections() {  // 요청시 해당 사용자가 좋아요한 영화에 따라 교집합 영화추천을 받는다.

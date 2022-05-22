@@ -1,12 +1,12 @@
-import axios from 'axios'
-const HOST = 'http://localhost:8000/api/v1/'
+import axios from "axios"
+const HOST = "http://localhost:8000/api/v1/"
 
 export const api = axios.create({
   baseURL: HOST,
 })
 
 api.interceptors.request.use(function (config) {
-  const token = localStorage.getItem('token')
+  const token = localStorage.getItem("token")
   
   // token이 없는 경우엔 config보내기
   if (!token) return config

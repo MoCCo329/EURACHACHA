@@ -9,5 +9,5 @@ import recommendations from './modules/recommendations'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  modules: { accounts, movies, reviews, recommendations },
+  modules: { accounts, movies, reviews, recommendations, articles },
 })

@@ -1,6 +1,6 @@
-import api from './api'
+import api from "./api"
 
-const END_POINT = 'movies'
+const END_POINT = "movies"
 
 export default {
   movieList() {  // 요청시마다 전체 영화DB에서 20개정도를 받는다.

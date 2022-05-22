@@ -19,7 +19,6 @@ export default {
     movieDetailReview: (state) => state.movieDetailReview,
     movieDetailRelated: (state) => state.movieDetailRelated,
     movieLike: (state) => state.movieLike,
-    // isAuthor: (state, getters) =>  // article에선 왜 필요하더라..
   },
 
   mutations: {
