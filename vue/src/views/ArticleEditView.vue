@@ -31,8 +31,8 @@ export default {
   },
   created () {
     const articlePk = this.$route.params.articlePk
-    if (articlePk !== "new") {this.articlePk = ""}
-    else {this.articlePk = articlePk}
+    if (articlePk !== "new") {this.articlePk = articlePk}
+    else {this.articlePk = ""}
     this.fetchArticle({ articlePk: articlePk })
   },
 }

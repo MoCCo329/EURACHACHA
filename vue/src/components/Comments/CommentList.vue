@@ -2,7 +2,7 @@
   <div>
     <ul>
       <comment-list-item
-        v-for="comment in comments"
+        v-for="comment in articleComments"
         :comment="comment"
         :key="comment.pk">
       </comment-list-item>

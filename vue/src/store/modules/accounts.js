@@ -15,6 +15,7 @@ export default {
     profile: (state) => state.profile,
     authError: (state) => state.authError,
     isAuthError: (state) => !!state.authError,  // 아직 이해 못함
+    authHeader: (state) => ({ Authorization: `Token ${state.token}` })
   },
 
   mutations: {
@@ -29,13 +30,15 @@ export default {
       account
         .login(credentials)
         .then((res) => {
+          console.log("login", res)
           const token = res.data.key
           commit("SET_TOKEN", token)
           localStorage.setItem("token", token)
-          dispatch("getCurrentUser")
-          router.push({ name: "home" })
+          dispatch("fetchCurrentUser")
+          router.push({ name: 'home' })
         })
         .catch((err) => {
+          console.error(err.response.data)
           commit("SET_AUTH_ERROR", err.response.data)
         })
     },
@@ -44,13 +47,15 @@ export default {
       account
         .signup(credentials)
         .then((res) => {
+          console.log("signup", res)
           const token = res.data.key
           commit("SET_TOKEN", token)
           localStorage.setItem("token", token)  // 로컬에 저장
-          dispatch("getCurrentUser")  // state에 저장
-          router.push({ name: "movies" })
+          dispatch("fetchCurrentUser")  // state에 저장
+          router.push({ name: 'home' })
         })
         .catch((err) => {
+          console.error(err.serponse.data)
           commit("SET_AUTH_ERROR", err.response.data)
         })
     },
@@ -62,7 +67,7 @@ export default {
           commit("SET_TOKEN", "")
           localStorage.setItem("token", "")
           // alert("성공적으로 로그아웃 되었습니다.")
-          router.push({ name: "home" })  // 원래 있던 페이지에서 로그아웃만 된 상태로 안되려나?
+          router.push({ name: 'home' })  // 원래 있던 페이지에서 로그아웃만 된 상태로 안되려나?
         })
         .catch((err) => console.error(err))
     },
@@ -70,19 +75,28 @@ export default {
     fetchCurrentUser({ commit, getters }) {  // 현재 유저 저장
       if (getters.isLoggedIn) {
         account
-          .currentUser()
+          .currentUser(getters.authHeader)
           .then((res) => {
-            commit("SET_CURRENT_USER", res.data)
+            console.log("fetchCurrentUser", res)
+            commit("SET_CURRENT_USER", res)
+          })
+          .catch((err) => {
+            if (err.response.status === 401) {
+              commit("SET_TOKEN", "")
+              localStorage.setItem("token", "")
+              router.push({ name: 'login' })
+            }
           })
       }
     },
 
-    fetchProfile({ commit }, { username }) {  // 프로파일 받아와 저장
+    fetchProfile({ commit, getters }, { username }) {  // 프로파일 받아와 저장
       account
-        .profile(username)
+        .profile(username, getters.authHeader)
         .then((res) => {
+          console.log("fetchProfile", res)
           commit("SET_PROFILE", res.data)
         })
-    }
-  }
+    },
+  },
 }

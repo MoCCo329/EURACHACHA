@@ -25,8 +25,8 @@ export default {
     article: {
       type: Object
     },
-    title: String,
-    content: String,
+    // title: String,
+    // content: String,
     action: String,
   },
   data () {

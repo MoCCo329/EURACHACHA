@@ -1,6 +1,6 @@
 import Vue from "vue"
 import VueRouter from "vue-router"
-import store from "../store"
+// import store from "../store"
 
 import HomeView from "../views/HomeView.vue"
 import MovieDetailView from "../views/MovieDetailView.vue"
@@ -37,7 +37,7 @@ const routes = [
   },
   {
     path: "/profile/:userPk",
-    name: "lrofile",
+    name: "profile",
     component: ProfileView
   },
   {
@@ -88,23 +88,24 @@ const router = new VueRouter({
 })
 
 // Navigation Guard
-router.beforeEach((to, from, next) => {
-  store.commit("SET_AUTH_ERROR", null)  // 이전 페이지에서 발생한 에러 삭제
+// router.beforeEach((to, from, next) => {
+//   store.commit("SET_AUTH_ERROR", null)  // 이전 페이지에서 발생한 에러 삭제
 
-  const { isLoggedIn } = store.getters
-  const noAuthPages = ["login", "signup"]
-  const isAuthRequired = !noAuthPages.includes(to.name)  // 가려는 곳이 로그인 필요한경우
+//   const { isLoggedIn } = store.getters
+//   const noAuthPages = ["login", "signup"]
+//   const isAuthRequired = !noAuthPages.includes(to.name)  // 가려는 곳이 로그인 필요한경우
 
-  if (isAuthRequired && isLoggedIn) {  // 로그인 돼있는데, login, signup으로 가려하면 홈으로
-    next({ name: 'login' })
-  } else {
-    next()
-  }
+//   if (isAuthRequired && isLoggedIn) {  // 로그인 돼있는데, login, signup으로 가려하면 홈으로
+//     next({ name: 'login' })
+//   } else {
+//     next()
+//   }
+//   next()
 
-  if (!isAuthRequired && isLoggedIn) {
-    next({ name:'home' })
-  }
-})
+//   if (!isAuthRequired && isLoggedIn) {
+//     next({ name:'home' })
+//   }
+// })
 
 
 export default router

@@ -9,9 +9,9 @@
         <router-link :to="{ name: 'recommendations' }">recommendations</router-link>
       </li>
 
-      <li v-if="isLoggedIn">
+      <!-- <li v-if="isLoggedIn">
         <router-link :to="{ name: 'profile', params: { username } }">profile</router-link>
-      </li>
+      </li> -->
       <li v-if="!isLoggedIn">
         <router-link :to="{ name: 'login' }">login</router-link>
       </li>

@@ -3,7 +3,7 @@
     <form @submit.prevent="onSubmit">
       <label for="comment">comment: </label>
       <input type="text" id="comment" v-model="content" required>
-      <button @click="submit">Comment</button>
+      <button>Comment</button>
     </form>
   </div>
 </template>

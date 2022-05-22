@@ -1,6 +1,6 @@
 import api from "./api"
 
-const END_POINT = "accounts"  // 이름 이유
+const END_POINT = "accounts"
 
 export default {
   login(data) {
@@ -23,16 +23,18 @@ export default {
       data: data
     })
   },
-  currentUser() {
+  currentUser(authHeader) {
     return api({
       method: "get",
       url: `${END_POINT}/user/`,
+      headers: authHeader,
     })
   },
-  profile(username) {
+  profile(username, authHeader) {
     return api({
       method: "get",
       url: `${END_POINT}/profile/${username}/`,
+      headers: authHeader,
     })
   }
 }

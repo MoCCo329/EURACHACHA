@@ -9,10 +9,10 @@ export default {
       url: `${END_POINT}/`,
     })
   },
-  detail(id) {
+  detail(articlePk) {
     return api({
       method: "get",
-      url: `${END_POINT}/${id}/`,
+      url: `${END_POINT}/${articlePk}/`,
     })
   },
   create(data) {
@@ -22,23 +22,23 @@ export default {
       data: data,
     })
   },
-  update(id, data) {
+  update(articlePk, data) {
     return api({
       method: "put",
-      url: `${END_POINT}/${id}/`,
+      url: `${END_POINT}/${articlePk}/`,
       data: data,
     })
   },
-  delete(id) {
+  delete(articlePk) {
     return api({
       method: "delete",
-      url: `${END_POINT}/${id}/`,
+      url: `${END_POINT}/${articlePk}/`,
     });
   },
-  like(id) {
+  like(articlePk) {
     return api({
       method: "post",
-      url: `${END_POINT}/${id}/like/`,
+      url: `${END_POINT}/${articlePk}/like/`,
     })
   },
 }

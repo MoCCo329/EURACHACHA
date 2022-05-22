@@ -47,7 +47,7 @@ export default {
     ...mapActions(["fetchArticle", "likeARticle", "deleteArticle"])
   },
   created() {
-    this.artickePk = this.$route.params.articlePk
+    this.articlePk = this.$route.params.articlePk
     this.fetchArticle({ articlePk: this.articlePk })
   }
 }

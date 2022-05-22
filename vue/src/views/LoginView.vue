@@ -1,7 +1,7 @@
 <template>
   <div>
     여기는 로그인 페이지
-    <account-error-list></account-error-list>
+    <account-error-list v-if="isAuthError"></account-error-list>
     <form @submit.prevent="login(credentials)">
       <div>
         <label for="username">username: </label>

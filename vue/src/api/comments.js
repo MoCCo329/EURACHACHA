@@ -6,7 +6,7 @@ export default {
   commentList (articlePk) {
     return api({
       method: "get",
-      url: `${articlePk}/comments/`
+      url: `articles/${articlePk}/comments/`
     })
   },
   create(articlePk, data) {

@@ -5,9 +5,9 @@
 
     <ul>
       <li v-for="article in articles" :key="article.pk">
-        <router-link :to="{ name: 'profile', params: { username: article.user.username } }">
+        <!-- <router-link :to="{ name: 'profile', params: { username: article.user.username } }">
           {{ article.user.username }}
-        </router-link>
+        </router-link> -->
         <router-link :to="{ name: 'article', params: { articlePk: article.pk } }">
           {{ article.title }}
         </router-link>

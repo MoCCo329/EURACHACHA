@@ -5,7 +5,7 @@ import comment from "@/api/comments"
 export default {
   state: {
     articles: [],
-    article: { title: "", content: "" },  // comments 포함?
+    article: { title: "", content: "" },
     articleComments: []
   },
 
@@ -35,7 +35,7 @@ export default {
     },
     
     fetchArticle({ commit }, { articlePk }) {
-      if (articlePk === "new") commit("SET_ARTICLE", { title: "", content: "" })
+      if (articlePk === "new") return commit("SET_ARTICLE", { title: "", content: "" })
       
       article
         .detail(articlePk)
@@ -55,9 +55,10 @@ export default {
       article
         .create(body)
         .then((res) => {
+          console.log("createArticle", res)
           commit("SET_ARTICLE", res.data)
           router.push({
-            name: "article",
+            name: 'article',
             params: { articlePk: getters.article.pk },
           })
         })

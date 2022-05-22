@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import AccountErrorList from "../components/Accounts/AccountErrorList.vue"
 import { mapActions, mapGetters } from "vuex"
+import AccountErrorList from "../components/Accounts/AccountErrorList.vue"
 
 export default {
   name: "SignupView",
