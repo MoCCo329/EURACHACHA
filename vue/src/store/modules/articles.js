@@ -1,6 +1,6 @@
 import router from "@/router"
-import article from "@/api/article"
-import comment from "@/api/comment"
+import article from "@/api/articles"
+import comment from "@/api/comments"
 
 export default {
   state: {

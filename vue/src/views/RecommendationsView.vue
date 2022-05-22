@@ -1,11 +1,16 @@
 <template>
   <div>
     <!-- <login-modal></login-modal> -->
-    <input type="radio" name="selectAlgo" v-model="selectedAlgo" value="Intersections" checked>교집합
-    <input type="radio" name="selectAlgo" v-model="selectedAlgo" value="Questions">스무고개
+    <!-- <label for="intersections">교집합</label>
+    <input type="radio" id="intersections" name="selectAlgo" v-model="intersections" value="Intersections" checked=true>
+    <label for="questions">스무고개</label>
+    <input type="radio" id="intersections" name="selectAlgo" v-model="questions" value="Questions"> -->
+    
+    <button @click="selectIntersections">교집합</button>
+    <button @click="selectQuestions">스무고개</button>
     <div>
-      <intersections-algo></intersections-algo>
-      <questions-algo></questions-algo>
+      <intersections-algo v-if="selectedAlgo === 'intersections'"></intersections-algo>
+      <questions-algo v-if="selectedAlgo === 'questions'"></questions-algo>
     </div>
   </div>
 </template>
@@ -24,9 +29,21 @@ export default {
   },
   data () {
     return {
-      selectedAlgo: ''
+      selectedAlgo: ""
     }
   },
+  methods: {
+    selectIntersections () {
+      if (this.selectedAlgo !== "intersections") {
+        this.selectedAlgo = "intersections"
+      }
+    },
+    selectQuestions () {
+      if (this.selectedAlgo !== "questions") {
+        this.selectedAlgo = "questions"
+      }
+    }
+  }
 }
 </script>
 

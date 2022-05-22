@@ -18,8 +18,7 @@
         <input type="password" id="password2" v-model="credentials.password2" required>
       </div>
       <button type="submit">signup</button>
-
-      <account-error-list></account-error-list>
+    </form>
   </div>
 </template>
 

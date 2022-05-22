@@ -1,6 +1,6 @@
 <template>
   <div>
-    
+    여기는 교집합
   </div>
 </template>
 

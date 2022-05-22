@@ -18,6 +18,9 @@ export default {
       content: "",
     }
   },
+  computed: {
+    ...mapGetters(["article"]),
+  },
   methods: {
     ...mapActions(["createComment"]),
     onSubmit () {

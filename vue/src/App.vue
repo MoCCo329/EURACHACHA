@@ -2,12 +2,12 @@
   <div id="app">
     <nav-bar></nav-bar>
     <hr>
-    <router-view/>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import NavBar from "../components/NavBar.vue"
+import NavBar from "./components/NavBar.vue"
 import { mapActions } from "vuex"
 
 
@@ -15,9 +15,10 @@ import { mapActions } from "vuex"
     name: "App",
     components: { NavBar },
     methods: {
-      ...mapActions([])
+      ...mapActions(["fetchCurrentUser"])
     },
     created() {
+      this.fetchCurrentUser()
     }
   }
 </script>

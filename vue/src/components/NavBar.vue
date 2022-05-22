@@ -1,18 +1,16 @@
 <template>
-  <div>
-    <!-- 홈, 추천, 프로필, 로그인, 로그아웃, 회원가입, 게시판 -->
+  <nav>
     <ul>
       <li>
         <router-link :to="{ name: 'home' }">home</router-link>
       </li>
-      <li>
-        <router-link :to="{ name: 'detail', params: { moviePk } }">detail</router-link>
-      </li>
+
       <li>
         <router-link :to="{ name: 'recommendations' }">recommendations</router-link>
       </li>
+
       <li v-if="isLoggedIn">
-        <router-link :to="{ name: 'profile' }">profile</router-link>
+        <router-link :to="{ name: 'profile', params: { username } }">profile</router-link>
       </li>
       <li v-if="!isLoggedIn">
         <router-link :to="{ name: 'login' }">login</router-link>
@@ -23,11 +21,12 @@
       <li v-if="!isLoggedIn">
         <router-link :to="{ name: 'signup' }">signup</router-link>
       </li>
+
       <li v-if="isLoggedIn">
         <router-link :to="{ name: 'articles' }">articles</router-link>
       </li>
     </ul>
-  </div>
+  </nav>
 </template>
 
 <script>

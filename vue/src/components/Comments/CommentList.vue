@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex"
+import { mapGetters, mapActions } from "vuex"
 import commentListItem from "./CommentListItem.vue"
 import commentListForm from "./CommentListForm.vue"
 
@@ -30,8 +30,8 @@ export default {
     ...mapActions(["fetchComments"])
   },
   created () {
-    const articlePk = $route.params.articlePk
-    this.fetchComments({ articlePk: this.artickePk })
+    const articlePk = this.$route.params.articlePk
+    this.fetchComments({ articlePk: articlePk })
   }
 }
 </script>

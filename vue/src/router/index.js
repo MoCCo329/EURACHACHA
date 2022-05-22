@@ -11,7 +11,7 @@ import ProfileView from "../views/ProfileView.vue"
 import LoginView from "../views/LoginView.vue"
 import LogoutView from "../views/LogoutView.vue"
 import SignupView from "../views/SignupView.vue"
-import NotFount404View from "../views/NotFount404View.vue"
+import NotFount404View from "../views/NotFound404View.vue"
 
 import ArticleListView from "../views/ArticleListView"
 import ArticleDetailView from "../views/ArticleDetailView"
@@ -96,7 +96,13 @@ router.beforeEach((to, from, next) => {
   const isAuthRequired = !noAuthPages.includes(to.name)  // 가려는 곳이 로그인 필요한경우
 
   if (isAuthRequired && isLoggedIn) {  // 로그인 돼있는데, login, signup으로 가려하면 홈으로
-    next({ name: "home" })
+    next({ name: 'login' })
+  } else {
+    next()
+  }
+
+  if (!isAuthRequired && isLoggedIn) {
+    next({ name:'home' })
   }
 })
 

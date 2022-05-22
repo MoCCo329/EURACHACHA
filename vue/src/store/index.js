@@ -5,6 +5,7 @@ import accounts from "./modules/accounts"
 import movies from "./modules/movies"
 import reviews from "./modules/reviews"
 import recommendations from "./modules/recommendations"
+import articles from "./modules/articles"
 
 Vue.use(Vuex)
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    
+    여기는 스무고개
   </div>
 </template>
 

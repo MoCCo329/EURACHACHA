@@ -11,7 +11,7 @@ import { mapGetters, mapActions } from "vuex"
 import ArticleForms from "../components/Articles/ArticleForms.vue"
 
 export default {
-  name: "ARticleEditView",
+  name: "ArticleEditView",
   components: {
     ArticleForms,
   },
@@ -22,14 +22,18 @@ export default {
   },
   computed: {
     ...mapGetters(["article"]),
-    actions: this.articlePk ? "update" : "create",
+    actions () {
+      return this.articlePk ? "update" : "create"
+    },
   },
   methods: {
     ...mapActions(["fetchArticle"]),
   },
   created () {
-    const articlePk = this.$route.params.articlePk  
-    this.fetchArticle({ articlePk: this.articlePk })
+    const articlePk = this.$route.params.articlePk
+    if (articlePk !== "new") {this.articlePk = ""}
+    else {this.articlePk = articlePk}
+    this.fetchArticle({ articlePk: articlePk })
   },
 }
 </script>

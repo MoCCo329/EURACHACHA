@@ -12,6 +12,7 @@
       <div>
         <button>{{ action }}</button>
       </div>
+    </form>
   </div>
 </template>
 
