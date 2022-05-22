@@ -1,10 +1,10 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue"
+import Vuex from "vuex"
 
-import accounts from './modules/accounts'
-import movies from './modules/movies'
-import reviews from './modules/reviews'
-import recommendations from './modules/recommendations'
+import accounts from "./modules/accounts"
+import movies from "./modules/movies"
+import reviews from "./modules/reviews"
+import recommendations from "./modules/recommendations"
 
 Vue.use(Vuex)
 

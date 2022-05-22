@@ -3,10 +3,10 @@ import api from "./api"
 // const END_POINT = "articles"
 
 export default {
-  commentList (articleId) {
+  commentList (articlePk) {
     return api({
       method: "get",
-      url: `${articleId}/comments/`
+      url: `${articlePk}/comments/`
     })
   },
   create(articlePk, data) {

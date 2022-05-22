@@ -7,12 +7,12 @@
 </template>
 
 <script>
-import NavBar from '../components/NavBar.vue'
-import { mapActions } from 'vuex'
+import NavBar from "../components/NavBar.vue"
+import { mapActions } from "vuex"
 
 
   export default {
-    name: 'App',
+    name: "App",
     components: { NavBar },
     methods: {
       ...mapActions([])

@@ -5,24 +5,24 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters } from "vuex"
 
 export default {
-  name: 'LogoutView',
+  name: "LogoutView",
   components: {
     
   },
   methods: {
-    ...mapActions(['logout'])
+    ...mapActions(["logout"])
   },
   computed: {
-    ...mapGetters(['isLoggedIn'])
+    ...mapGetters(["isLoggedIn"])
   },
   created() {
     if (this.isLoggedIn) {
       this.logout()
     } else {
-      alert('잘못된 접근입니다.')
+      alert("잘못된 접근입니다.")
       this.$router.back()
     }
   }

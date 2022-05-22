@@ -1,0 +1,33 @@
+<template>
+  <div>
+    <form @submit.prevent="onSubmit">
+      <label for="comment">comment: </label>
+      <input type="text" id="comment" v-model="content" required>
+      <button @click="submit">Comment</button>
+    </form>
+  </div>
+</template>
+
+<script>
+import { mapGetters, mapActions } from "vuex"
+
+export default {
+  name: "CommentListForm",
+  data () {
+    return {
+      content: "",
+    }
+  },
+  methods: {
+    ...mapActions(["createComment"]),
+    onSubmit () {
+      this.createComment({ articlePk: this.article.pk, content: this.content, })
+      this.content
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>

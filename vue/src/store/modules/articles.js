@@ -5,7 +5,8 @@ import comment from "@/api/comment"
 export default {
   state: {
     articles: [],
-    article: { title: '', content: '' },  // comments 포함
+    article: { title: "", content: "" },  // comments 포함?
+    articleComments: []
   },
 
   getters: {
@@ -14,6 +15,7 @@ export default {
     isAuthor: (state, getters) => {
       return state.article.user?.username === getters.currentUser?.username
     },
+    articleComments: (state) => state.articleComments
   },
 
   mutations: {
@@ -27,21 +29,23 @@ export default {
       article
         .articleList()
         .then((res) => {
-          commit('SET_ARTICLES', res.data)
+          commit("SET_ARTICLES", res.data)
         })
         .catch((err) => console.error(err.response))
     },
     
     fetchArticle({ commit }, { articlePk }) {
+      if (articlePk === "new") commit("SET_ARTICLE", { title: "", content: "" })
+      
       article
         .detail(articlePk)
         .then((res) => {
-          commit('SET_ARTICLE', res.data)
+          commit("SET_ARTICLE", res.data)
         })
         .catch((err) => {
           console.error(err.response)
           if (err.response.status === 404) {
-            router.push({ name: 'NotFound404' })
+            router.push({ name: "NotFound404" })
           }
         })
     },
@@ -51,9 +55,9 @@ export default {
       article
         .create(body)
         .then((res) => {
-          commit('SET_ARTICLE', res.data)
+          commit("SET_ARTICLE", res.data)
           router.push({
-            name: 'article',
+            name: "article",
             params: { articlePk: getters.article.pk },
           })
         })
@@ -65,7 +69,7 @@ export default {
       article
         .update(articlePk, body)
         .then((res) => {
-          commit('SET_ARTICLE', res.data)
+          commit("SET_ARTICLE", res.data)
           router.push({
             name: "article",
             params: { articlePk: getters.article.pk }
@@ -91,6 +95,20 @@ export default {
           commit("SET_ARTICLE", res.data)
         })
         .catch((err) => console.error(err.response))
+    },
+
+    fetchComments({ commit }, { articlePk }) {
+      comment
+        .commentList(articlePk)
+        .then((res) => {
+          commit("SET_ARTICLE_COMMENTS", res.data)
+        })
+        .catch((err) => {
+          console.error(err.response)
+          if (err.response.status === 404) {
+            router.push({ name: "NotFound404" })
+          }
+        })
     },
 
     createComment({ commit }, { articlePk, content }) {

@@ -17,27 +17,27 @@
 </template>
 
 <script>
-import AccountErrorList from '../components/Accounts/AccountErrorList.vue'
-import { mapActions, mapGetters } from 'vuex'
+import AccountErrorList from "../components/Accounts/AccountErrorList.vue"
+import { mapActions, mapGetters } from "vuex"
 
 export default {
-  name: 'LoginView',
+  name: "LoginView",
   components: {
     AccountErrorList,
   },
   data() {
     return {
       credentials: {
-        username: '',
-        password: '',
+        username: "",
+        password: "",
       }
     }
   },
   computed: {
-    ...mapGetters(['isAuthError'])
+    ...mapGetters(["isAuthError"])
   },
   methods: {
-    ...mapActions(['login'])
+    ...mapActions(["login"])
   }
 }
 </script>

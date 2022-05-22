@@ -2,7 +2,8 @@
   <div>
     여기는 signup
 
-    <account-error-list></account-error-list>
+    <account-error-list v-if="isAuthError"></account-error-list>
+    
     <form @submit.prevent="signup(credentials)">
       <div>
         <label for="username">username: </label>
@@ -23,28 +24,28 @@
 </template>
 
 <script>
-import AccountErrorList from '../components/Accounts/AccountErrorList.vue'
-import { mapActions, mapGetters } from 'vuex'
+import AccountErrorList from "../components/Accounts/AccountErrorList.vue"
+import { mapActions, mapGetters } from "vuex"
 
 export default {
-  name: 'SignupView',
+  name: "SignupView",
   components: {
     AccountErrorList,
   },
   data() {
     return {
       credentials: {
-        username: '',
-        password1: '',
-        password2: '',
+        username: "",
+        password1: "",
+        password2: "",
       },
     }
   },
   computed: {
-    ...mapGetters(['isAuthError'])
+    ...mapGetters(["isAuthError"])
   },
   methods: {
-    ...mapActions(['signup'])
+    ...mapActions(["signup"])
   }
 }
 </script>
