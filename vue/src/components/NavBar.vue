@@ -9,9 +9,9 @@
         <router-link :to="{ name: 'recommendations' }">recommendations</router-link>
       </li>
 
-      <!-- <li v-if="isLoggedIn">
+      <li v-if="isLoggedIn">
         <router-link :to="{ name: 'profile', params: { username } }">profile</router-link>
-      </li> -->
+      </li>
       <li v-if="!isLoggedIn">
         <router-link :to="{ name: 'login' }">login</router-link>
       </li>
@@ -36,10 +36,10 @@ export default {
   name: "NavBar",
   computed: {
     ...mapGetters(["isLoggedIn", "currentUser"]),
-    username() {
+    username () {
       return this.currentUser.username ? this.currentUser.username : "guest"  // 로그인 안됐으면 guest
-    }
-  }
+    },
+  },
 }
 </script>
 <style>

@@ -11,7 +11,10 @@
         <router-link :to="{ name: 'article', params: { articlePk: article.pk } }">
           {{ article.title }}
         </router-link>
-        댓글 수 : {{ article.comment_count }} | 좋아요 수 : {{ article.like_count }}
+        댓글 수 : {{ article.comment_count }} | 좋아요 수 : {{ article.like_count }} | 
+        <router-link :to="{ name: 'profile', params: { username: article.user.username } }">
+          작성자 : {{ article.user.username }}
+        </router-link>
       </li>
     </ul>
 

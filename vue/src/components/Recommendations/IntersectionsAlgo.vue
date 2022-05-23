@@ -1,12 +1,24 @@
 <template>
   <div>
     여기는 교집합
+    {{ intersections }}
   </div>
 </template>
 
 <script>
-export default {
+import { mapGetters, mapActions } from "vuex"
 
+export default {
+  name: "IntersectionsAlgo",
+  computed: {
+    ...mapGetters(["intersections"])
+  },
+  methods: {
+    ...mapActions(["fetchIntersections"])
+  },
+  created () {
+    this.fetchIntersections()
+  }
 }
 </script>
 

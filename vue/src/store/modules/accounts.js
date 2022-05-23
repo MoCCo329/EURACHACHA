@@ -10,11 +10,11 @@ export default {
   },
 
   getters: {
-    isLoggedIn: (state) => !!state.token,  // ? lodash?
-    currnetUser: (state) => state.currentUser,
+    isLoggedIn: (state) => !!state.token,
+    currentUser: (state) => state.currentUser,
     profile: (state) => state.profile,
     authError: (state) => state.authError,
-    isAuthError: (state) => !!state.authError,  // 아직 이해 못함
+    isAuthError: (state) => !!state.authError,
     authHeader: (state) => ({ Authorization: `Token ${state.token}` })
   },
 
@@ -35,7 +35,7 @@ export default {
           commit("SET_TOKEN", token)
           localStorage.setItem("token", token)
           dispatch("fetchCurrentUser")
-          router.push({ name: 'home' })
+          router.push({ name: "home" })
         })
         .catch((err) => {
           console.error(err.response.data)
@@ -52,7 +52,7 @@ export default {
           commit("SET_TOKEN", token)
           localStorage.setItem("token", token)  // 로컬에 저장
           dispatch("fetchCurrentUser")  // state에 저장
-          router.push({ name: 'home' })
+          router.push({ name: "home" })
         })
         .catch((err) => {
           console.error(err.serponse.data)
@@ -67,7 +67,7 @@ export default {
           commit("SET_TOKEN", "")
           localStorage.setItem("token", "")
           // alert("성공적으로 로그아웃 되었습니다.")
-          router.push({ name: 'home' })  // 원래 있던 페이지에서 로그아웃만 된 상태로 안되려나?
+          router.push({ name: "home" })  // 원래 있던 페이지에서 로그아웃만 된 상태로 안되려나?
         })
         .catch((err) => console.error(err))
     },
@@ -77,25 +77,31 @@ export default {
         account
           .currentUser(getters.authHeader)
           .then((res) => {
-            console.log("fetchCurrentUser", res)
-            commit("SET_CURRENT_USER", res)
+            console.log("fetchCurrentUser", res.data)
+            commit("SET_CURRENT_USER", res.data)
           })
           .catch((err) => {
             if (err.response.status === 401) {
               commit("SET_TOKEN", "")
               localStorage.setItem("token", "")
-              router.push({ name: 'login' })
+              router.push({ name: "login" })
             }
           })
       }
     },
 
     fetchProfile({ commit, getters }, { username }) {  // 프로파일 받아와 저장
+      console.log(username)
       account
         .profile(username, getters.authHeader)
         .then((res) => {
           console.log("fetchProfile", res)
           commit("SET_PROFILE", res.data)
+        })
+        .catch((err) => {
+          if (err.response.status === 404) {
+            router.push({ name: "NotFound404" })
+          }
         })
     },
   },

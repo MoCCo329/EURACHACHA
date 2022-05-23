@@ -1,39 +1,36 @@
 import router from "@/router"
 import movies from "@/api/movies"
-import review from "@/api/review"
+// import _ from "lodash"
 
 export default {
   state: {
     movieList: [],
     nowPlaying: [],
     movieDetail: {},
-    movieDetailReview: [],
-    movieDetailRelated: [],
-    movieLike: [],
+    movieRelatedReleaseDate: [],
+    movieRelatedGenre: [],
   },
 
   getters: {
-    movieLIST: (state) => state.movieList,
+    movieList: (state) => state.movieList,
     nowPlaying: (state) => state.nowPlaying,
     movieDetail: (state) => state.movieDetail,
-    movieDetailReview: (state) => state.movieDetailReview,
-    movieDetailRelated: (state) => state.movieDetailRelated,
-    movieLike: (state) => state.movieLike,
+    movieRelatedReleaseDate: (state) => state.movieRelatedReleaseDate,
+    movieRelatedGenre: (state) => state.movieRelatedGenre,
   },
 
   mutations: {
-    SET_MOVIE_LIST: (state, movies) => (state.movieLIST.push(...movies)),
+    SET_MOVIE_LIST: (state, movies) => (state.movieList = movies),
     SET_NOW_PLAYING: (state, nowPlaying) => (state.nowPlaying = nowPlaying),
     SET_MOVIE_DETAIL: (state, movieDetail) => (state.movieDetail = movieDetail),
-    SET_MOVIE_DETAIL_RELATED: (state, movieDetailRelated) => (state.movieDetailRelated = movieDetailRelated),
-    SET_MOVIE_DETAIL_REVIEW: (state, movieDetailReview) => (state.movieDetailReview = movieDetailReview),
-    SET_LIKE_MOVIE: (state, movieLike) => (state.movieLike.push(movieLike)),
+    SET_RELATED_RELEASE_DATE: (state, movieRelated) => (state.movieRelatedReleaseDate = movieRelated),
+    SET_RELATED_GENRE: (state, movieRelated) => (state.movieRelatedGenre = movieRelated),
   },
 
   actions: {
-    fetchMovieList({ commit }) {  // 홈 영화 리스트 랜덤 20개 추가로 받기
+    fetchMovieList({ commit }) {
       movies
-        .MovieList()
+        .movieList()
         .then((res) => {
           commit("SET_MOVIE_LIST", res.data)
         })
@@ -47,7 +44,7 @@ export default {
 
     fetchNowPlaying({ commit }) {  // 홈 현재 상영작 받기
       movies
-        .NowPlaying()
+        .nowPlaying()
         .then((res) => {
           commit("SET_NOW_PLAYING", res.data)
         })
@@ -63,6 +60,7 @@ export default {
       movies
         .detail(moviePk)
         .then((res) => {
+          console.log("fetchMovieDetail", res)
           commit("SET_MOVIE_DETAIL", res.data)
         })
         .catch((err) => {
@@ -76,9 +74,10 @@ export default {
 
     fetchMovieDetailRelated({ commit }, moviePk) {  // 디테일 페이지 관련 영화
       movies
-        .related(moviePk)
+        .relatedReleaseDate(moviePk)
         .then((res) => {
-          commit("SET_MOVIE_DETAIL_RELATED", res.data)
+          console.log("relatedReleaseDate", res)
+          commit("SET_RELATED_RELEASE_DATE", res.data)
         })
         .catch((err) => {
           console.error(err.response)
@@ -86,13 +85,11 @@ export default {
             router.push({ name: "NotFound404" })
           }
         })
-    },
-
-    fetchMovieDetailReview({ commit }, moviePk) {  // 디테일 페이지 리뷰들
-      review
-        .reviewList(moviePk)
+      movies
+        .relatedGenre(moviePk)
         .then((res) => {
-          commit("SET_MOVIE_DETAIL_REVIEW", res.data)
+          console.log("relatedGenre", res)
+          commit("SET_RELATED_GENRE", res.data)
         })
         .catch((err) => {
           console.error(err.response)
@@ -100,14 +97,13 @@ export default {
             router.push({ name: "NotFound404" })
           }
         })
-        .catch((err) => console.error(err.response))
     },
 
     likeMovie({ commit }, moviePk) {  // 영화 데이터를 다시 불러오기 힘드니, likeMovies에 들어가거나 DB에서 온 isLike(?)에 따라 좋아요 표시
       movies
         .likeMovie(moviePk)
         .then((res) => {
-          commit("SET_Like_MOVIE", res.data)
+          commit("SET_MOVIE_DETAIL", res.data)
         })
         .catch((err) => console.error(err.response))
     },

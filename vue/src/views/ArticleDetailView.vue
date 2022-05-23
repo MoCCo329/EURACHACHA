@@ -2,7 +2,11 @@
   <div>
     여기는 Article Detail
     <!-- <login-modal></login-modal> -->
-    <p>{{ article.title }}</p>
+    <p>{{ article.title }} | 작성자 : 
+      <router-link :to="{ name: 'profile', params: { username: article.user.username } }">
+        {{ article.user.username }}
+      </router-link>
+    </p>
     <p>{{ article.content }}</p>
 
     <div v-if="isAuthor">
@@ -13,7 +17,7 @@
     </div>
 
     <div>
-      <button @click="likeArticle({ articlePk: article.pk })">{{ like_count }}</button>
+      <button @click="doLikeArticle">{{ like_count }}</button>
     </div>
 
     <hr>
@@ -39,14 +43,19 @@ export default {
   },
   computed: {
     ...mapGetters(["article", "currentUser", "isAuthor"]),
-    like_count() {
+    like_count () {
       return this.article.like_users?.length
     },
   },
   methods: {
-    ...mapActions(["fetchArticle", "likeARticle", "deleteArticle"])
+    ...mapActions(["fetchArticle", "likeArticle", "deleteArticle"]),
+    doLikeArticle () {
+      if (!this.isAuthor) {
+        this.likeArticle({ articlePk: this.article.pk })
+      }
+    }
   },
-  created() {
+  created () {
     this.articlePk = this.$route.params.articlePk
     this.fetchArticle({ articlePk: this.articlePk })
   }

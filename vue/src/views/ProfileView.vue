@@ -2,8 +2,11 @@
   <div>
     여기는 profile
 
-    {{ profile.username }}
-    <!-- 작성 글 목록, 작성 리뷰, 좋아요한 영화들, 좋아요한 감독들 -->
+    <hr>
+    <p>{{ profile.username }}의 페이지</p>
+    <p>좋아요한 영화들 : {{ profile.like_movies }}</p>
+    <p>작성한 리뷰들 : {{ profile.reviews }}</p>
+    
     <!-- <login-modal></login-modal> -->
   </div>
 </template>
@@ -21,10 +24,10 @@ export default {
     ...mapGetters(["profile"])
   },
   methods: {
-    ...mapActions(["fetchProfile"])
+    ...mapActions(["fetchProfile", "fetch"])
   },
   created() {
-    const payload = { username: this.$rout.params.username }
+    const payload = { username: this.$route.params.username }
     this.fetchProfile(payload)
   },
 }

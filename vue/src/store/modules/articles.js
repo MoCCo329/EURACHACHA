@@ -21,7 +21,7 @@ export default {
   mutations: {
     SET_ARTICLES: (state, articles) => (state.articles = articles),
     SET_ARTICLE: (state, article) => (state.article = article),
-    SET_ARTICLE_COMMENTS: (state, comments) => (state.article.comments = comments),
+    SET_ARTICLE_COMMENTS: (state, comments) => (state.articleComments = comments),
   },
 
   actions: {
@@ -40,6 +40,7 @@ export default {
       article
         .detail(articlePk)
         .then((res) => {
+          console.log("fetchArticle", res)
           commit("SET_ARTICLE", res.data)
         })
         .catch((err) => {
@@ -102,6 +103,7 @@ export default {
       comment
         .commentList(articlePk)
         .then((res) => {
+          console.log("fetchComments", res)
           commit("SET_ARTICLE_COMMENTS", res.data)
         })
         .catch((err) => {
@@ -117,6 +119,7 @@ export default {
       comment
         .create(articlePk, body)
         .then((res) => {
+          console.log(res)
           commit("SET_ARTICLE_COMMENTS", res.data)
         })
         .catch((err) => console.error(err.response))

@@ -1,27 +1,41 @@
+import router from "@/router"
 import review from "@/api/review"
 
 export default {
   state: {
     reviews: [],
-    reviewLike: [],
   },
 
   getters: {
     reviews: (state) => state.reviews,
-    reviewLike: (state) => state.reviewLike,
   },
 
   mutations: {
     SET_REVIEW: (state, reviews) => (state.reviews = reviews),
-    SET_LIKE_REVIEW: (state, reviewLike) => (state.reviewLike = reviewLike),
   },
 
   actions: {
+    fetchMovieDetailReview({ commit }, moviePk) {  // 디테일 페이지 리뷰들
+      review
+        .reviewList(moviePk)
+        .then((res) => {
+          console.log("fetchMovieDetailReviewList", res.data)
+          commit("SET_REVIEW", res.data)
+        })
+        .catch((err) => {
+          console.error(err.response)
+          if (err.response.status === 404) {
+            router.push({ name: "NotFound404" })
+          }
+        })
+    },
+
     createReview({ commit }, { moviePk, content, score }) {
       const body = { content, score }
       review
         .create(moviePk, body)
         .then((res) => {
+          console.log("createReview", res)
           commit("SET_REVIEW", res.data)
         })
         .catch((err) => console.error(err.response))
@@ -32,6 +46,7 @@ export default {
       review
         .update(moviePk, reviewPk, body)
         .then((res) => {
+          console.log("updateReview", res)
           commit("SET_REVIEW", res.data)
         })
         .catch((err) => console.error(err.response))
@@ -50,7 +65,7 @@ export default {
       review
         .likeReview(moviePk, reviewPk)
         .then((res) => {
-          commit("SET_LIKE_REVIEW", res.data)
+          commit("SET_REVIEW", res.data)
         })
         .catch((err) => console.error(err.response))
     },
