@@ -24,7 +24,7 @@
     <span>
       <button @click="doLikeReview">{{ like_count }}</button>
     </span>
-  </li>
+  </li> 
 </template>
 
 <script>

@@ -23,18 +23,16 @@ export default {
       data: data
     })
   },
-  currentUser(authHeader) {
+  currentUser() {
     return api({
       method: "get",
       url: `${END_POINT}/user/`,
-      headers: authHeader,
     })
   },
-  profile(username, authHeader) {
+  profile(username) {
     return api({
       method: "get",
       url: `${END_POINT}/profile/${username}/`,
-      headers: authHeader,
     })
   }
 }

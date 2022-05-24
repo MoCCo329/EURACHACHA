@@ -3,7 +3,7 @@ import api from "./api"
 const END_POINT = "movies"
 
 export default {
-  movieList() {  // 요청시마다 전체 영화DB에서 20개정도를 받는다.
+  movieList() {
     return api({
       method: "get",
       url: `${END_POINT}/`,

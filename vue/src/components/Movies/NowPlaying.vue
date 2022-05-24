@@ -1,13 +1,13 @@
 <template>
   <div>
     여기는 NowPlaying
-    <ul>
-      <li v-for="movie in nowPlaying" :key="movie.pk">
+    <div class="d-flex">
+      <div v-for="movie in nowPlaying" :key="movie.pk">
         <router-link :to="{ name: 'detail', params: { moviePk: movie.pk } }">
           {{ movie.title }}
         </router-link>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 </template>
 

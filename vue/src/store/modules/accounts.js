@@ -15,7 +15,6 @@ export default {
     profile: (state) => state.profile,
     authError: (state) => state.authError,
     isAuthError: (state) => !!state.authError,
-    authHeader: (state) => ({ Authorization: `Token ${state.token}` })
   },
 
   mutations: {
@@ -75,7 +74,7 @@ export default {
     fetchCurrentUser({ commit, getters }) {  // 현재 유저 저장
       if (getters.isLoggedIn) {
         account
-          .currentUser(getters.authHeader)
+          .currentUser()
           .then((res) => {
             console.log("fetchCurrentUser", res.data)
             commit("SET_CURRENT_USER", res.data)
@@ -90,10 +89,10 @@ export default {
       }
     },
 
-    fetchProfile({ commit, getters }, { username }) {  // 프로파일 받아와 저장
+    fetchProfile({ commit }, { username }) {  // 프로파일 받아와 저장
       console.log(username)
       account
-        .profile(username, getters.authHeader)
+        .profile(username)
         .then((res) => {
           console.log("fetchProfile", res)
           commit("SET_PROFILE", res.data)
