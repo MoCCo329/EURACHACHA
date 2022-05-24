@@ -10,8 +10,8 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-3"></div>
-        <div class="router-view col-9">
+        <div class="col-2"></div>
+        <div class="router-view col-10">
           <router-view></router-view>
         </div>
       </div>
@@ -44,17 +44,18 @@ import { mapActions } from "vuex"
   font-family: sans-serif;
 }
 #app {
-  background-color: rgba(31, 36, 46, 0.534);
+  background-color: black;
   position: relative;
   min-height: 100vh;
   width: 100%;
   overflow: hidden;
+  color: white;
 }
 .sidebar {
   position: fixed;
   top: 0;
   left: 0;
-  height: 60vh;
+  height: 100vh;
   max-width: 18vh;
   width: 240px;
   background: rgb(101, 62, 62);
