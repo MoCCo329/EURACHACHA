@@ -134,7 +134,7 @@ export default {
         })
     },
 
-    likeMovie({ commit }, moviePk) {  // 영화 데이터를 다시 불러오기 힘드니, likeMovies에 들어가거나 DB에서 온 isLike(?)에 따라 좋아요 표시
+    likeMovie({ commit }, moviePk) {
       movies
         .likeMovie(moviePk)
         .then((res) => {

@@ -1,11 +1,16 @@
 <template>
   <div>
+
     <div class="my-3 fs-3 fw-bold">NowPlaying</div>
     <swiper
     class="swiper"
     :options="swiperOption"
     >
       <swiper-slide class="bg-black" v-for="movie in nowPlaying" :key="movie.pk">
+
+    여기는 NowPlaying
+    <div class="d-flex">
+      <div v-for="movie in nowPlaying" :key="movie.pk">
         <router-link :to="{ name: 'detail', params: { moviePk: movie.pk } }">
           <div class="card" style="width: 12rem;">
             <img :src="poster_url(movie.poster_path)" class="card-img-top" alt="...">
@@ -23,6 +28,8 @@
       <div class="swiper-button-prev" slot="button-prev"></div>
       <div class="swiper-button-next" slot="button-next"></div>
     </swiper>
+      </div>
+    </div>
   </div>
 
 </template>
