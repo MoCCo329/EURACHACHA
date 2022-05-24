@@ -1,6 +1,7 @@
 <template>
   <div>
-    여기는 Home
+    <div class="my-3 fs-3 fw-bold">Home</div>
+    <hr>
 
     <!-- <login-modal></login-modal> -->
     <now-playing></now-playing>

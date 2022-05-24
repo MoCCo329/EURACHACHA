@@ -1,8 +1,16 @@
 <template>
   <div id="app">
-    <nav-bar></nav-bar>
-    <hr>
-    <router-view></router-view>
+    <div class="container">
+      <div class="row">
+        <div class="col-2">
+          <nav-bar></nav-bar>
+        </div>
+          
+        <div class="col-10">
+          <router-view></router-view>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -24,5 +32,8 @@ import { mapActions } from "vuex"
 </script>
 
 <style>
-
+#app {
+  background-color: black;
+  color: white;
+}
 </style>
