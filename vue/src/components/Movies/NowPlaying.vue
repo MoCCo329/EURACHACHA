@@ -7,7 +7,7 @@
     >
       <swiper-slide class="bg-black" v-for="movie in nowPlaying" :key="movie.pk">
         <router-link :to="{ name: 'detail', params: { moviePk: movie.pk } }">
-          <div class="card" style="width: 20rem;">
+          <div class="card" style="width: 12rem;">
             <img :src="poster_url(movie.poster_path)" class="card-img-top" alt="...">
             <div class="card-body position-absolute bottom-0 start-0">
               <p class="card-text text-white">{{ movie.title }}</p>

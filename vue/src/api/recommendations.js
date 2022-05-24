@@ -11,7 +11,7 @@ export default {
   },
   questions(data) {  // 요청시 누적 질문들을 만족하는 영화들을 받는다.
     return api({
-      method: "get",
+      method: "post",
       url: `movies/${END_POINT}/questions/`,
       data: data
     })

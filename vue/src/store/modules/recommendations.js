@@ -22,16 +22,22 @@ export default {
       recommendations
         .intersections()
         .then((res) => {
-          console.log("set intersections", res)
+          console.log("Set_Intersections", res)
           commit("SET_INTERSECTIONS", res.data)
         })
-        .catch((err) => console.error(err.response))
+        .catch((err) => {
+          console.error(err.response)
+          if (err.response.status === 404) {
+            router.push({ name: "NotFound404" })
+          }
+        })
     },
 
     fetchQuestions({ commit }, data) {
       recommendations
         .questions(data)
         .then((res) => {
+          console.log("Set_Questions", res)
           commit("SET_QUESTIONS", res.data)
         })
         .catch((err) => {
