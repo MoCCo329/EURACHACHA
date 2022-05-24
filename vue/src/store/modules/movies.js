@@ -6,6 +6,8 @@ export default {
   state: {
     movieList: [],
     nowPlaying: [],
+    popular: [],
+    upcoming: [],
     movieDetail: {},
     movieRelatedReleaseDate: [],
     movieRelatedGenre: [],
@@ -14,6 +16,8 @@ export default {
   getters: {
     movieList: (state) => state.movieList,
     nowPlaying: (state) => state.nowPlaying,
+    popular: (state) => state.popular,
+    upcoming: (state) => state.upcoming,
     movieDetail: (state) => state.movieDetail,
     movieRelatedReleaseDate: (state) => state.movieRelatedReleaseDate,
     movieRelatedGenre: (state) => state.movieRelatedGenre,
@@ -22,6 +26,8 @@ export default {
   mutations: {
     SET_MOVIE_LIST: (state, movies) => (state.movieList = movies),
     SET_NOW_PLAYING: (state, nowPlaying) => (state.nowPlaying = nowPlaying),
+    SET_POPULAR: (state, popular) => (state.popular = popular),
+    SET_UPCOMING: (state, upcoming) => (state.upcoming = upcoming),
     SET_MOVIE_DETAIL: (state, movieDetail) => (state.movieDetail = movieDetail),
     SET_RELATED_RELEASE_DATE: (state, movieRelated) => (state.movieRelatedReleaseDate = movieRelated),
     SET_RELATED_GENRE: (state, movieRelated) => (state.movieRelatedGenre = movieRelated),
@@ -55,6 +61,35 @@ export default {
           }
         })
     },
+
+    fetchPopular({ commit }) {
+      movies
+        .popular()
+        .then((res) => {
+          commit("SET_POPULAR", res.data)
+        })
+        .catch((err) => {
+          console.error(err.response)
+          if (err.response.status === 404) {
+            router.push({ name: "NotFound404" })
+          }
+        })
+    },
+
+    fetchUpcoming({ commit }) {
+      movies
+        .upcoming()
+        .then((res) => {
+          commit("SET_UPCOMING", res.data)
+        })
+        .catch((err) => {
+          console.error(err.response)
+          if (err.response.status === 404) {
+            router.push({ name: "NotFound404" })
+          }
+        })
+    },
+
 
     fetchMovieDetail({ commit }, moviePk) {  // 영화 디테일 정보
       movies

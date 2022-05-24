@@ -3,8 +3,10 @@
     여기는 Home
 
     <!-- <login-modal></login-modal> -->
-    <movie-list></movie-list>
     <now-playing></now-playing>
+    <popular-list></popular-list>
+    <upcoming-list></upcoming-list>
+    <movie-list></movie-list>    
   </div>
 </template>
 
@@ -12,6 +14,8 @@
 // import LoginModal from "../components/Accounts/LoginModal.vue"
 import MovieList from "../components/Movies/MovieList.vue"
 import NowPlaying from "../components/Movies/NowPlaying.vue"
+import PopularList from "../components/Movies/PopularList.vue"
+import UpcomingList from "../components/Movies/UpcomingList.vue"
 
 export default {
   name: "HomeView",
@@ -19,6 +23,8 @@ export default {
     // LoginModal,
     MovieList,
     NowPlaying,
+    PopularList,
+    UpcomingList,
   },
   
 }

@@ -1,8 +1,8 @@
 <template>
   <div>
-    여기는 MovieList
+    여기는 Upcoming
     <ul>
-      <li v-for="movie in movieList" :key="movie.pk">
+      <li v-for="movie in upcoming" :key="movie.pk">
         <router-link :to="{ name: 'detail', params: { moviePk: movie.pk } }">
           {{ movie.title }}
         </router-link>
@@ -15,15 +15,15 @@
 import { mapActions, mapGetters } from "vuex"
 
 export default {
-  name: "MovieList",
+  name: "UpcomingList",
   computed: {
-    ...mapGetters(["movieList"]),
+    ...mapGetters(["upcoming"]),
   },
   methods: {
-    ...mapActions(["fetchMovieList"]),
+    ...mapActions(["fetchUpcoming"]),
   },
   created () {
-    this.fetchMovieList()
+    this.fetchUpcoming()
   }
 }
 </script>

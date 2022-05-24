@@ -15,6 +15,18 @@ export default {
       url: `${END_POINT}/now_playing/`
     })
   },
+  popular() {
+    return api({
+      method: "get",
+      url: `${END_POINT}/popular/`
+    })
+  },
+  upcoming() {
+    return api({
+      method: "get",
+      url: `${END_POINT}/upcoming/`
+    })
+  },
   detail(moviePk) {  // 요청시 해당 영화의 세부정보를 얻는다.
     return api({
       method: "get",
