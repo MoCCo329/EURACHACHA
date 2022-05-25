@@ -23,7 +23,7 @@ export default {
   computed: {
     ...mapGetters(["article"]),
     actions () {
-      return this.articlePk ? "update" : "create"
+      return this.articlePk ? "Update" : "Create"
     },
   },
   methods: {

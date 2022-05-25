@@ -11,7 +11,7 @@
       </div>
       <div class="d-flex justify-content-end">
         <button type="submit" class="btn btn-primary me-3">{{ action }}</button>
-        <router-link :to="{ name: 'articles' }"><button class="cancel btn btn-primary">cancel</button></router-link>
+        <router-link :to="{ name: 'articles' }"><button class="cancel btn btn-primary">Cancel</button></router-link>
       </div>
     </form>
   </div>
@@ -42,10 +42,10 @@ export default {
     ...mapActions(["createArticle", "updateArticle",]),
 
     onSubmit () {
-      if (this.action === "create") {
+      if (this.action === "Create") {
         const payload = this.newArticle
         this.createArticle(payload)
-      } else if (this.action === "update") {
+      } else if (this.action === "Update") {
         const payload = { articlePk: this.article.pk, ...this.newArticle }
         this.updateArticle(payload)
       }

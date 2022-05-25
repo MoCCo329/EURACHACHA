@@ -81,8 +81,8 @@ export default {
           })
           .catch((err) => {
             if (err.response.status === 401) {
-              commit("SET_TOKEN", "")
-              localStorage.setItem("token", "")
+              // commit("SET_TOKEN", "")
+              // localStorage.setItem("token", "")
               router.push({ name: "login" })
             }
           })

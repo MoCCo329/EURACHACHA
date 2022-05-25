@@ -110,7 +110,6 @@ export default {
             router.push({ name: "NotFound404" })
           }
         })
-        .catch((err) => console.error(err.response))
     },
 
     fetchMovieDetailRelated({ commit }, moviePk) {  // 디테일 페이지 관련 영화

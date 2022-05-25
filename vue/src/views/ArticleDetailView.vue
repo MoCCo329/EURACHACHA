@@ -38,6 +38,10 @@
 
     <hr>
     <comment-list></comment-list>
+
+    <div class="d-flex justify-content-end">
+      <router-link :to="{ name: 'articles' }"><button class="btn btn-primary my-3">Back</button></router-link>
+    </div>
   </div>
 </template>
 
@@ -127,5 +131,4 @@ export default {
 .edit {
   color: white;
 }
-
 </style>

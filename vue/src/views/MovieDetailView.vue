@@ -94,6 +94,9 @@
     <hr>
 
     <movie-review-list></movie-review-list>
+    <div class="d-flex justify-content-end">
+      <router-link :to="{ name: 'home' }"><button class="btn btn-primary my-3">back</button></router-link>
+    </div>
   </div>
 </template>
 
@@ -151,20 +154,20 @@ export default {
     const moviePk = this.$route.params.moviePk
     this.fetchMovieDetail(moviePk)
     this.fetchMovieDetailRelated(moviePk)
-    // const backdropPath = this.movieDetail.backdrop_path
-    // console.log(backdropPath)
-    // this.fetchBackgroundImage(`url(https://image.tmdb.org/t/p/w500${backdropPath})`)
-  },
-  beforemounted () {
     const backdropPath = this.movieDetail.backdrop_path
     console.log(backdropPath)
     this.fetchBackgroundImage(`url(https://image.tmdb.org/t/p/w500${backdropPath})`)
   },
-    updated () {
-    if (!this.bacmkgroundImage && this.backdropPath) {
-      this.fetchBackgroundImage(`url(https://image.tmdb.org/t/p/w500${this.backdropPath})`)
-    }
-  },
+  // beforemounted () {
+  //   const backdropPath = this.movieDetail.backdrop_path
+  //   console.log(backdropPath)
+  //   this.fetchBackgroundImage(`url(https://image.tmdb.org/t/p/w500${backdropPath})`)
+  // },
+  //   updated () {
+  //   if (!this.backgroundImage && this.backdropPath) {
+  //     this.fetchBackgroundImage(`url(https://image.tmdb.org/t/p/w500${this.backdropPath})`)
+  //   }
+  // },
   destroyed () {
     this.fetchBackgroundImage("")
   },

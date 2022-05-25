@@ -6,11 +6,11 @@
     <form @submit.prevent="login(credentials)">
       <div class="login-input">
         <!-- <label for="username">username: </label> -->
-        <input class="w-50 username mb-2" v-model="credentials.username" type="text" id="username" required placeholder="  Username">
+        <input class="w-50 username mb-2 ps-2" v-model="credentials.username" type="text" id="username" required placeholder="Username">
       </div>
       <div>
         <!-- <label for="password">password: </label> -->
-        <input class="w-50 password mb-1" v-model="credentials.password" type="password" id="password" required placeholder="  Password">
+        <input class="w-50 password mb-1 ps-2" v-model="credentials.password" type="password" id="password" required placeholder="Password">
       </div>
       <button class="btn btn-light w-50 mt-3 rounded-pill" type="submit">Login</button>
     </form>
