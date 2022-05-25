@@ -72,6 +72,7 @@ export default {
 <style>
 .article-head {
   display: flex;
+  justify-content: space-evenly;
   align-items: center;
   background: rgb(49, 45, 45);
   height: 100%;
@@ -86,7 +87,6 @@ export default {
 .article-head .text {
   font-size: 15px;
   color: white;
-  padding: 1rem;
   letter-spacing: 2px;
   line-height: 22px;
 }
