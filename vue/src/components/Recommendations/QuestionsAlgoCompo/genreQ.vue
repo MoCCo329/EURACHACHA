@@ -37,25 +37,25 @@ export default {
     emitAns (idx, ans) {
       if (idx === 0) {
         if (ans) {
-          return this.$emit("genre", 1)
+          return this.$emit("genre", "1")
         } else {
           this.state += 1
         }
       } else if (idx === 1 || idx === 2 || idx === 3) {
         if (ans) {
-          return this.$emit("genre", 2)
+          return this.$emit("genre", "2")
         } else {
           this.state += 1
         }
       } else if (idx === 4) {
         if (ans) {
-          return this.$emit("genre", 3)
+          return this.$emit("genre", "3")
         } else {
           this.state += 1
         }
       } else if (idx === 5) {
         if (ans) {
-          return this.$emit("genre", 4)
+          return this.$emit("genre", "4")
         } else {
           this.state = 0
           return this.$emit("changeQ")

@@ -4,7 +4,7 @@
 
     <genre-q v-if="randomQ[state] === 'genre'" @genre="getGenre" @changeQ="changeQ"></genre-q>
     <release-date-q v-if="randomQ[state] === 'releaseDate'" @releaseDate="getReleaseDate" @changeQ="changeQ"></release-date-q>
-    <runtime-q v-if="randomQ[state] === 'genre'" @runtime="getRuntime" @changeQ="changeQ"></runtime-q>
+    <runtime-q v-if="randomQ[state] === 'runtime'" @runtime="getRuntime" @changeQ="changeQ"></runtime-q>
 
     <answer v-if="state > 2">
       {{ questions }}

@@ -35,25 +35,25 @@ export default {
     emitAns (idx, ans) {
       if (idx === 0) {
         if (ans) {
-          return this.$emit("runtime", 1)
+          return this.$emit("runtime", "1")
         } else {
           this.state += 1
         }
       } else if (idx === 1) {
         if (ans) {
-          return this.$emit("runtime", 2)
+          return this.$emit("runtime", "2")
         } else {
           this.state += 1
         }
       } else if (idx === 2) {
         if (ans) {
-          return this.$emit("runtime", 3)
+          return this.$emit("runtime", "3")
         } else {
           this.state += 1
         }
       } else if (idx === 3) {
         if (ans) {
-          return this.$emit("runtime", 4)
+          return this.$emit("runtime", "4")
         } else {
           this.state = 0
           return this.$emit("changeQ")

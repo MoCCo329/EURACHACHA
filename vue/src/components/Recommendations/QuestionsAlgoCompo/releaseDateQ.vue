@@ -36,25 +36,25 @@ export default {
     emitAns (idx, ans) {
       if (idx === 0 || idx === 1) {
         if (ans) {
-          return this.$emit("releaseDate", 1)
+          return this.$emit("releaseDate", "1")
         } else {
           this.state += 1
         }
       } else if (idx === 2) {
         if (ans) {
-          return this.$emit("releaseDate", 2)
+          return this.$emit("releaseDate", "2")
         } else {
           this.state += 1
         }
       } else if (idx === 3) {
         if (ans) {
-          return this.$emit("releaseDate", 3)
+          return this.$emit("releaseDate", "3")
         } else {
           this.state += 1
         }
       } else if (idx === 4) {
         if (ans) {
-          return this.$emit("releaseDate", 4)
+          return this.$emit("releaseDate", "4")
         } else {
           this.state = 0
           return this.$emit("changeQ")

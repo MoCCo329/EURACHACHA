@@ -34,6 +34,7 @@ export default {
     },
 
     fetchQuestions({ commit }, data) {
+      console.log("여기", data)
       recommendations
         .questions(data)
         .then((res) => {
