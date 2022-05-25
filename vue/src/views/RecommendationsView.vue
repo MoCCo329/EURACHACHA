@@ -5,13 +5,17 @@
     <input type="radio" id="intersections" name="selectAlgo" v-model="intersections" value="Intersections" checked=true>
     <label for="questions">스무고개</label>
     <input type="radio" id="intersections" name="selectAlgo" v-model="questions" value="Questions"> -->
+    <div style="height: 200px"></div>
+    <div class="my-container mx-auto bg-secondary d-flex justify-content-center align-items-center flex-column ">
     
-    <button @click="selectIntersections">교집합</button>
-    <button @click="selectQuestions">스무고개</button>
+    <button v-show="clicked" class="btn btn-success my-3" @click="[selectIntersections(), hide()]">Recommend Movies based on your likes</button>
+    <button v-show="clicked" class="btn btn-warning" @click="[selectQuestions(), hide()]">Recommend Movies based on few questions</button>
+    
     <div>
       <intersections-algo v-if="selectedAlgo === 'intersections'"></intersections-algo>
       <questions-algo v-if="selectedAlgo === 'questions'"></questions-algo>
     </div>
+  </div>
   </div>
 </template>
 
@@ -29,7 +33,8 @@ export default {
   },
   data () {
     return {
-      selectedAlgo: ""
+      selectedAlgo: "",
+      clicked: true
     }
   },
   methods: {
@@ -42,11 +47,16 @@ export default {
       if (this.selectedAlgo !== "questions") {
         this.selectedAlgo = "questions"
       }
+    },
+    hide() {
+      this.clicked = !this.clicked
     }
   }
 }
 </script>
 
 <style>
-
+.my-container {
+  height: 600px;
+}
 </style>
