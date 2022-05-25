@@ -117,7 +117,7 @@ export default {
         .relatedReleaseDate(moviePk)
         .then((res) => {
           console.log("relatedReleaseDate", res)
-          commit("SET_RELATED_RELEASE_DATE", res.data)
+          commit("SET_RELATED_RELEASE_DATE", res.data.slice(0, 20))
         })
         .catch((err) => {
           console.error(err.response)
@@ -129,7 +129,7 @@ export default {
         .relatedGenre(moviePk)
         .then((res) => {
           console.log("relatedGenre", res)
-          commit("SET_RELATED_GENRE", res.data)
+          commit("SET_RELATED_GENRE", res.data.slice(0, 20))
         })
         .catch((err) => {
           console.error(err.response)

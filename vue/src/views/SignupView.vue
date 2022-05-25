@@ -6,13 +6,13 @@
     
       <form @submit.prevent="signup(credentials)">
         <div class="signup-input">
-          <input class="w-50 username" v-model="credentials.username" type="text" id="username" required placeholder="  Username">
+          <input class="w-50 username ps-2" v-model="credentials.username" type="text" id="username" required placeholder="Username">
         </div>
         <div>
-          <input class="w-50 password my-2" v-model="credentials.password1" type="password" id="password" required placeholder="  Password">
+          <input class="w-50 password my-2 ps-2" v-model="credentials.password1" type="password" id="password" required placeholder="Password">
         </div>
         <div>
-          <input class="w-50 password" v-model="credentials.password2" type="password" id="password" required placeholder="  Password Again">
+          <input class="w-50 password ps-2" v-model="credentials.password2" type="password" id="password" required placeholder="Password Again">
         </div>
         <button class="btn btn-light w-50 mt-3 rounded-pill" type="submit">Sign up</button>
       </form>

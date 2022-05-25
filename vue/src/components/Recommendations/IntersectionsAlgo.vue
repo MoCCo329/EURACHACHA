@@ -5,17 +5,19 @@
     <div class="mx-5" v-for="movie in intersections" :key="movie.pk">
       <!-- <img :src="poster_url(movie.poster_path)" alt="..."> -->
       <router-link class="contain" :to="{ name: 'detail', params: { moviePk: movie.pk } }">
-          <div class="front card-front ca" style="width: 12rem;">
-          </div>
+        <div class="front card-front ca" style="width: 12rem;">
+        </div>
 
-          <div class="card back ca" style="width: 12rem;">
-            <img :src="poster_url(movie.poster_path)" class="card-img-top" alt="...">
-            <div class="card-body position-absolute bottom-0 start-0">
-              <p class="card-text text-white">{{ movie.title }}</p>
-            </div>
+        <div class="card back ca" style="width: 12rem;">
+          <img :src="poster_url(movie.poster_path)" class="card-img-top" alt="...">
+          <div class="card-body position-absolute bottom-0 start-0">
+            <p class="card-text text-white">{{ movie.title }}</p>
           </div>
-        </router-link>
+        </div>
+      </router-link>
     </div>
+
+    <div v-if="intersections.length===0">There are too few movies you like to recommend. Please LIKE more movies</div>
     
   </div>
 </template>
