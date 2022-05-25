@@ -1,20 +1,28 @@
 <template>
   <div>
-    여기는 Articles
+    <div class="my-3 fs-3 fw-bold">Article</div>
     <!-- <login-modal></login-modal> -->
-
-    <ul>
-      <li v-for="article in articles" :key="article.pk">
-        <!-- <router-link :to="{ name: 'profile', params: { username: article.user.username } }">
-          {{ article.user.username }}
-        </router-link> -->
-        <router-link :to="{ name: 'article', params: { articlePk: article.pk } }">
-          {{ article.title }}
-        </router-link>
-        댓글 수 : {{ article.comment_count }} | 좋아요 수 : {{ article.like_count }} | 
-        <router-link :to="{ name: 'profile', params: { username: article.user.username } }">
-          작성자 : {{ article.user.username }}
-        </router-link>
+    <div class="article-head">
+      <i class='bx bx-chat'></i>
+      <span class="text fs-7 fw-bold">게시판은 영화에 대한 유용한 정보나 의견을 공유하고 서로 도움을 받을 수 있는 소통하는 공간입니다. <br>다양한 의견과 글을 자유롭게 게시하고 공유해주세요.</span>
+    </div>
+    
+    Total ({{ article_count }})<hr>
+    <ul class="article-ul">
+      <li class="article-li" v-for="article in articles" :key="article.pk">
+        <div class="article">
+          <router-link class="router-link" :to="{ name: 'article', params: { articlePk: article.pk } }">
+            {{ article.title }}<br>{{ article.created_at | time }}
+          </router-link>
+          <span class="article-detail">
+            <i class='bx bx-message-square-dots' ></i> {{ article.comment_count }}
+            <i class="fa-solid fa-heart"></i> {{ article.like_count }}
+            <router-link class="router-link" :to="{ name: 'profile', params: { username: article.user.username } }">
+              <i class='bx bx-user' ></i> {{ article.user.username }}
+            </router-link>
+          </span>
+        </div>
+        <hr>
       </li>
     </ul>
 
@@ -34,10 +42,18 @@ export default {
     // LoginModal,
   },
   computed: {
-    ...mapGetters(["articles"])
+    ...mapGetters(["articles"]),
+    article_count () {
+      return this.articles.length
+    }
   },
   methods: {
     ...mapActions(['fetchArticles'])
+  },
+  filters: {
+    time (date) {
+      return `${date.slice(0, 10)}  ${date.slice(11,19)}`
+    }
   },
   created () {
     this.fetchArticles()
@@ -46,5 +62,49 @@ export default {
 </script>
 
 <style>
-
+.article-head {
+  display: flex;
+  align-items: center;
+  background: rgb(49, 45, 45);
+  height: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+.article-head .bx-chat {
+  font-size: 5rem;
+  color: white;
+  padding: 1rem;
+}
+.article-head .text {
+  font-size: 15px;
+  color: white;
+  padding: 1rem;
+  letter-spacing: 2px;
+  line-height: 22px;
+}
+.article-ul {
+  list-style: none;
+  padding-left: 1.8rem;
+  padding-right: 0.8rem;
+}
+.article-ul .article-li {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.article{
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden; 
+  height: 5rem;
+}
+.article .router-link {
+  text-decoration: None;
+  color: white;
+  line-height: 40px;
+  letter-spacing: 1px;
+}
+.article .article-detail {
+  align-self: center;
+  letter-spacing: 1px;
+}
 </style>

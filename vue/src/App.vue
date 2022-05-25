@@ -4,7 +4,7 @@
       <div class="logo">
         <img class="logo-img" src="../public/logo.png">
       </div>
-      <i id="btn" class="bx bx-menu" ></i>
+      <!-- <i id="btn" class="bx bx-menu" ></i> -->
       <nav-bar class="nav-list"></nav-bar>
     </div>
 
@@ -68,7 +68,7 @@ import { mapActions } from "vuex"
 .sidebar .logo .logo-img {
   width: 100%;
 }
-.sidebar #btn {
+/* .sidebar #btn {
   display: flex;
   justify-content: right;
   color: white;
@@ -76,5 +76,5 @@ import { mapActions } from "vuex"
   width: 100%;
   line-height: 50px;
   transform: translateX(-50%)
-}
+} */
 </style>

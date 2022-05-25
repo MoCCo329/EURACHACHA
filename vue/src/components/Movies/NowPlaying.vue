@@ -6,7 +6,7 @@
     :options="swiperOption"
     >
       <swiper-slide class="bg-black" v-for="movie in nowPlaying" :key="movie.pk">
-        <router-link :to="{ name: 'detail', params: { moviePk: movie.pk } }">
+        <router-link class="asdf" :to="{ name: 'detail', params: { moviePk: movie.pk } }">
           <div class="card" style="width: 12rem;">
             <img :src="poster_url(movie.poster_path)" class="card-img-top" alt="...">
             <div class="card-body position-absolute bottom-0 start-0">
@@ -74,10 +74,11 @@ export default {
 </script>
 
 <style>
-/* .hover:hover {
-  visibility: hidden !important;
-  color: rgb(255, 255, 255);
-} */
+.asdf:hover {
+  /* visibility: hidden !important; */
+  color: rgb(255, 255, 255) !important;
+  background: white !important;
+}
 
 .swiper {
   width: 100%;
