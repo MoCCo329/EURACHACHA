@@ -47,7 +47,8 @@ import { mapActions, mapGetters } from "vuex"
   background-color: black;
   background-image: fixed;
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: 60%;
+  background-position: 60% 0%;
   /* filter: blur(5px); */
   position: relative;
   min-height: 100vh;
