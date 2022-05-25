@@ -1,9 +1,9 @@
 <template>
   <div>
     <div>
-      {{ releaseDateQ[state] }}
-      <button @click="emitAns(state, true)">T</button>
-      <button @click="emitAns(state, false)">F</button>
+      <p class="fs-2">{{ releaseDateQ[state] }}</p> 
+      <button class="btn btn-primary" @click="emitAns(state, true)">Yes</button>
+      <button class="btn btn-primary" @click="emitAns(state, false)">No</button>
     </div>
   </div>
 </template>

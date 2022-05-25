@@ -1,13 +1,27 @@
 <template>
   <div>
-    여기는 스무고개
 
     <genre-q v-if="randomQ[state] === 'genre'" @genre="getGenre" @changeQ="changeQ"></genre-q>
     <release-date-q v-if="randomQ[state] === 'releaseDate'" @releaseDate="getReleaseDate" @changeQ="changeQ"></release-date-q>
     <runtime-q v-if="randomQ[state] === 'runtime'" @runtime="getRuntime" @changeQ="changeQ"></runtime-q>
 
-    <answer v-if="state > 2">
-      {{ questions }}
+    <answer class="d-flex" v-if="state > 2">
+      <!-- {{ questions }} -->
+      <div class="mx-3" v-for="movie in questions" :key="movie.pk">
+      <!-- <img :src="poster_url(movie.poster_path)" alt="..."> -->
+      <router-link class="contain" :to="{ name: 'detail', params: { moviePk: movie.pk } }">
+          <div class="front card-front ca" style="width: 12rem;">
+          </div>
+
+          <div class="card back ca" style="width: 12rem;">
+            <img :src="poster_url(movie.poster_path)" class="card-img-top" alt="...">
+            <div class="card-body position-absolute bottom-0 start-0">
+              <p class="card-text text-white">{{ movie.title }}</p>
+            </div>
+          </div>
+        </router-link>
+    </div>
+      
     </answer>
 
   </div>
@@ -72,6 +86,9 @@ export default {
     },
     getRandomInt (min, max) {
       return Math.floor(Math.random() * (max - min)) + min
+    },
+    poster_url(poster_path) {
+      return `https://image.tmdb.org/t/p/w500` + poster_path
     },
   },
   created () {

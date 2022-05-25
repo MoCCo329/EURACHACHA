@@ -1,9 +1,11 @@
 <template>
   <div>
     <div>
-      {{ genreQ[state] }}
-      <button @click="emitAns(state, true)">T</button>
-      <button @click="emitAns(state, false)">F</button>
+      <p class="fs-2">{{ genreQ[state] }}</p> 
+      <div>
+        <button class="btn btn-primary" @click="emitAns(state, true)">Yes</button>
+        <button class="btn btn-primary" @click="emitAns(state, false)">No</button>
+      </div>
     </div>
   </div>
 </template>
