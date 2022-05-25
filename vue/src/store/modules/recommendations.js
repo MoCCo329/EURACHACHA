@@ -33,10 +33,10 @@ export default {
         })
     },
 
-    fetchQuestions({ commit }, data) {
-      console.log("여기", data)
+    fetchQuestions({ commit }, { genre, release_date, runtime }) {
+      const body = { genre, release_date, runtime }
       recommendations
-        .questions(data)
+        .questions(body)
         .then((res) => {
           console.log("Set_Questions", res)
           commit("SET_QUESTIONS", res.data)

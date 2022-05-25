@@ -64,12 +64,11 @@ export default {
         const data = {
           genre: this.genre,
           release_date: this.releaseDate,
-          runtime: this.runtime,
+          runtime: this.runtime
         }
         this.fetchQuestions(data)
-      } else {
-        this.state += 1
       }
+      this.state += 1
     },
     getRandomInt (min, max) {
       return Math.floor(Math.random() * (max - min)) + min
