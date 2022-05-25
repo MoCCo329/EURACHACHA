@@ -26,13 +26,15 @@
         </div>
       </div>
 
-      <div class="review-edit" v-if="isEditing">
-        <label for="score">Score: </label>
-        <input type="number" min="0" max="10" step="1" v-model="payload.score" required>
-        <label for="review">Review: </label>
-        <input type="text" id="review" v-model="payload.content" required>
-        <button @click="onUpdate">Update</button>
-        <button @click="doCancel">Cancle</button>
+      <div class="review-edit d-flex" v-if="isEditing">
+        <!-- <label for="score">Score: </label> -->
+        <div class="me-3">{{currentUser.username}} </div>
+        <input type="number" min="0" max="10" step="1" v-model="payload.score" required >
+        <!-- <label for="review">Review: </label>
+        <input type="text" id="review" v-model="payload.content" required> -->
+        <input type="text" class="form-control mx-3" id="review" aria-describedby="reviewHelp" v-model="payload.content" required>
+        <button type="submit" class="btn btn-primary me-3" @click="onUpdate">Update</button>
+        <button type="submit" class="btn btn-primary" @click="doCancel">Cancle</button>
       </div>
     </div>
 

@@ -62,7 +62,7 @@ import { mapActions, mapGetters } from "vuex"
   height: 100vh;
   max-width: 18vh;
   width: 240px;
-  background: rgb(101, 62, 62);
+  background: #141517;
   padding: 6px 5px;
   overflow: hidden;
 }

@@ -1,7 +1,5 @@
 <template>
   <div>
-    여기는 Home
-
     <!-- <login-modal></login-modal> -->
     <now-playing></now-playing>
     <popular-list></popular-list>
