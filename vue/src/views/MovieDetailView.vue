@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="my-3 fs-3 fw-bold">MovieDetail - 장르 해결해야함</div>
+    <div class="my-3 fs-3 fw-bold">MovieDetail</div>
     <!-- <div>{{ movieDetail }}</div> -->
     <!-- <img :src="poster_url(movieDetail.poster_path)" alt="...">  -->
     <!-- <img :src="poster_url(movieDetail.backdrop_path)" alt="..."> -->
@@ -9,17 +9,24 @@
     <div>{{movieDetail.overview}}</div>
     <div>{{movieDetail.runtime}}</div>
     <div>{{movieDetail.vote_average}}</div> -->
-    <div class="card mb-3 bg-black" style="max-width: 840px;">
+    <div class="card mb-3 bg-black ms-5" style="max-width: 900px;">
       <div class="row g-0">
         <div class="col-md-4">
           <img :src="poster_url(movieDetail.poster_path)" class="img-fluid rounded-start" alt="...">
         </div>
         <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">{{movieDetail.title}}</h5>
+          <div class="card-body mt-5 ms-3">
+            <h5 class="card-title fs-1 mb-3">{{movieDetail.title}}</h5>
             <p class="card-text">{{movieDetail.overview}}</p>
-            <p class="card-text"><small class="text-muted">
-              {{movieDetail.release_date}} {{movieDetail.runtime}} {{movieDetail.vote_average}}
+            <p class="card-text">
+              Genre:
+              <span v-for="genre in movieDetail.genres" :key="genre.name">
+                {{genre.name}}
+              </span>
+            </p>
+            <p class="card-text"><small>
+              <p><i class="fa-solid fa-calendar"> {{movieDetail.release_date}}</i> </p> 
+              <i class="fa-solid fa-hourglass-end"> {{movieDetail.runtime}} min</i>    
             </small></p>
             <!-- 사용자가 누르면 하트 채워지고 비워지고 해야함 -->
             <p><i class="fa-solid fa-heart" @click="doLikeMovie"> {{ like_count }}</i></p>

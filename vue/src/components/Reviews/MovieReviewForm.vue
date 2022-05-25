@@ -2,7 +2,7 @@
   <div>
     <form @submit.prevent="onSubmit">
       <div class="mb-3">
-        <label for="review" class="form-label">REVIEW</label>
+        <label for="review" class="form-label my-3 fs-3 fw-bold">REVIEW</label>
         <div class="d-flex">
           <!-- <label for="score">score: </label> -->
           <div>{{currentUser.username}} </div>
