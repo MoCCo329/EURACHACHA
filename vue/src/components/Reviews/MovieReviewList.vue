@@ -9,6 +9,7 @@
         :key="review.pk">
       </movie-review-item>
     </div>
+    
     <movie-review-form></movie-review-form>
   </div>
 </template>

@@ -24,12 +24,14 @@
                 {{genre.name}}
               </span>
             </p>
-            <p class="card-text"><small>
-              <p><i class="fa-solid fa-calendar"> {{movieDetail.release_date}}</i> </p> 
-              <i class="fa-solid fa-hourglass-end"> {{movieDetail.runtime}} min</i>    
-            </small></p>
-            <!-- 사용자가 누르면 하트 채워지고 비워지고 해야함 -->
-            <p><i class="fa-solid fa-heart" @click="doLikeMovie"> {{ like_count }}</i></p>
+            <div class="card-detail">
+              <p class="card-text"><small>
+                <p><i class="fa-solid fa-calendar"> {{movieDetail.release_date}}</i> </p> 
+                <i class="fa-solid fa-hourglass-end"> {{movieDetail.runtime}} min</i>    
+              </small></p>
+              <!-- 사용자가 누르면 하트 채워지고 비워지고 해야함 -->
+              <p><i class="fa-solid fa-heart" @click="doLikeMovie"></i> {{ like_count }}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -150,5 +152,7 @@ export default {
 </script>
 
 <style>
-
+.card-detail {
+  word-spacing: 3px;
+}
 </style>

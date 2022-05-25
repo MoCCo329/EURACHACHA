@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="my-3 fs-3 fw-bold">COMMENTS FOR ARTICLE</div>
     <ul>
       <comment-list-item
         v-for="comment in articleComments"

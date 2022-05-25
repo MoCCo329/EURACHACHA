@@ -2,34 +2,41 @@
 <template>
   <div>
     <router-link class="text-decoration-none" :to="{ name: 'profile', params: { username: review.user.username } }">
-      <span class="text-white"> {{ review.user.username }} </span>
+      <i class='bx bx-user'></i><span class="text-white"> {{ review.user.username }} </span>
     </router-link>
 
-    <span v-if="!isEditing"> 
-      <i class="fa-solid fa-star">{{ payload.score }} </i>
-      <div>
-        {{ payload.content }} 
+    <div class="review-body">
+      <div v-if="!isEditing">
+        <div>
+          <i class="fa-solid fa-star mb-3"></i><span class="fa-solid mb-3 mx-2"> {{ payload.score }} </span>
+          <div class="review-content">
+            {{ payload.content }} 
+          </div>
+        </div>
+
+        <div class="review-detail">
+          <span>
+            {{ isUpdated }}
+            created at : {{ review.created_at | time }}
+          </span>
+
+          <span class="ms-3">      
+            <i class="fa-solid fa-thumbs-up mx-2" @click="doLikeReview"></i><span class="fa-solid">{{ like_count }}</span>
+          </span>
+        </div>
       </div>
-      created_at - 댓글작성일시까지 넘겨줘야함
-      {{payload}}
-    </span>
 
-    <span v-if="isEditing">
-      <label for="score">Score: </label>
-      <input type="number" min="0" max="10" step="1" v-model="payload.score" required>
-      <label for="review">Review: </label>
-      <input type="text" id="review" v-model="payload.content" required>
-      <button @click="onUpdate">Update</button>
-      <button @click="doCancel">Cancle</button>
-    </span>
+      <div class="review-edit" v-if="isEditing">
+        <label for="score">Score: </label>
+        <input type="number" min="0" max="10" step="1" v-model="payload.score" required>
+        <label for="review">Review: </label>
+        <input type="text" id="review" v-model="payload.content" required>
+        <button @click="onUpdate">Update</button>
+        <button @click="doCancel">Cancle</button>
+      </div>
+    </div>
 
-    <span class="ms-3">
-      <!-- <button @click="doLikeReview">{{ like_count }}</button> -->
-      
-      <i class="fa-solid fa-thumbs-up" @click="doLikeReview"> {{ like_count }}</i>
-    </span>
-
-    <div v-if="currentUser.username === review.user.username && !isEditing">
+    <div class="my-2" v-if="currentUser.username === review.user.username && !isEditing">
       <!-- <button type="button" class="btn btn-primary btn-sm" @click="switchIsEditing">Edit</button> -->
       <i class="fa-solid fa-pencil" @click="switchIsEditing"></i>
       <!-- <button type="button" class="btn btn-primary btn-sm ms-2" @click="deleteReview(payload)">Delete</button> -->
@@ -67,6 +74,13 @@ export default {
     isAuthor () {
       return this.review.user?.username === this.currentUser?.username
     },
+    isUpdated () {
+      if (this.review.updated_at === this.review.created_at) {
+        return ""
+      } else {
+        return `updated at : ${this.time(this.article.updated_at)} | `
+      }
+    },
   },
   methods: {
     ...mapActions(["updateReview", "deleteReview", "likeReview"]),
@@ -89,10 +103,27 @@ export default {
       this.payload.score = this.temp.score
       this.content = {}
     }
-  }
+  },
+  filters: {
+    time (date) {
+      return `${date.slice(0, 10)}  ${date.slice(11,19)}`
+    },
+  },
 }
 </script>
 
 <style>
-
+.bx-user {
+  color: white;
+}
+.review-body {
+  min-height: 120px;
+}
+.review-content {
+  min-height: 90px;
+}
+.review-detail {
+  display: flex;
+  justify-content: space-between;
+}
 </style>

@@ -10,7 +10,7 @@
     <div class="article-top">
       <span>Total ({{ article_count }})</span>
       <router-link class="create-btn" :to="{ name: 'articleEdit', params: {articlePk: 'new'} }">
-        <i class='bx bx-edit-alt' ></i> Create
+        <i class="fa-solid fa-pencil"></i> Create
       </router-link>
     </div>
     <hr>
@@ -24,7 +24,7 @@
             <i class='bx bx-message-square-dots' ></i> {{ article.comment_count }}
             <i class="fa-solid fa-heart"></i> {{ article.like_count }}
             <router-link class="router-link" :to="{ name: 'profile', params: { username: article.user.username } }">
-              <i class='bx bx-user' ></i> {{ article.user.username }}
+              <i class='bx bx-user'></i> {{ article.user.username }}
             </router-link>
           </span>
         </div>
@@ -34,7 +34,7 @@
 
     <div class="create">
       <router-link class="create-btn" :to="{ name: 'articleEdit', params: {articlePk: 'new'} }">
-        <i class='bx bx-edit-alt' ></i> Create
+        <i class="fa-solid fa-pencil"></i> Create
       </router-link>
     </div>
   </div>
@@ -93,6 +93,7 @@ export default {
 .article-top {
   display: flex;
   justify-content: space-between;
+  padding-right: 1rem
 }
 .article-ul {
   list-style: none;
