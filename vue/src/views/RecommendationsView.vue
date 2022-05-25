@@ -6,7 +6,7 @@
     <label for="questions">스무고개</label>
     <input type="radio" id="intersections" name="selectAlgo" v-model="questions" value="Questions"> -->
     <div style="height: 200px"></div>
-    <div class="my-container mx-auto bg-secondary d-flex justify-content-center align-items-center flex-column ">
+    <div class="my-container mx-auto d-flex justify-content-center align-items-center flex-column ">
     
     <button v-show="clicked" class="btn btn-success my-3" @click="[selectIntersections(), hide()]">Recommend Movies based on your likes</button>
     <button v-show="clicked" class="btn btn-warning" @click="[selectQuestions(), hide()]">Recommend Movies based on few questions</button>
