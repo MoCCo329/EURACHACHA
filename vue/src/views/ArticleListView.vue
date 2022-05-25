@@ -7,7 +7,13 @@
       <span class="text fs-7 fw-bold">게시판은 영화에 대한 유용한 정보나 의견을 공유하고 서로 도움을 받을 수 있는 소통하는 공간입니다. <br>다양한 의견과 글을 자유롭게 게시하고 공유해주세요.</span>
     </div>
     
-    Total ({{ article_count }})<hr>
+    <div class="article-top">
+      <span>Total ({{ article_count }})</span>
+      <router-link class="create-btn" :to="{ name: 'articleEdit', params: {articlePk: 'new'} }">
+        <i class='bx bx-edit-alt' ></i> Create
+      </router-link>
+    </div>
+    <hr>
     <ul class="article-ul">
       <li class="article-li" v-for="article in articles" :key="article.pk">
         <div class="article">
@@ -26,9 +32,11 @@
       </li>
     </ul>
 
-    <router-link :to="{ name: 'articleEdit', params: {articlePk: 'new'} }">
-      <button>Create</button>
-    </router-link>
+    <div class="create">
+      <router-link class="create-btn" :to="{ name: 'articleEdit', params: {articlePk: 'new'} }">
+        <i class='bx bx-edit-alt' ></i> Create
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -82,6 +90,10 @@ export default {
   letter-spacing: 2px;
   line-height: 22px;
 }
+.article-top {
+  display: flex;
+  justify-content: space-between;
+}
 .article-ul {
   list-style: none;
   padding-left: 1.8rem;
@@ -106,5 +118,15 @@ export default {
 .article .article-detail {
   align-self: center;
   letter-spacing: 1px;
+}
+.create {
+  display: flex;
+  justify-content: right;
+  padding-right: 1rem;
+}
+.create-btn {
+  text-decoration: None;
+  color: white;
+  font-size: 1rem;
 }
 </style>
