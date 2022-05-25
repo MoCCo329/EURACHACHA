@@ -1,21 +1,21 @@
 <template>
   <div>
-    <div class="my-3 fs-3 fw-bold">Profile</div>
-
-    <hr>
-    <!-- <p>{{ profile.username }} Profile</p> -->
     <div class="my-3 fs-3 fw-bold">{{ profile.username }}'s Profile</div>
-    <!-- <p>좋아요한 영화들 : {{ profile.like_movies }}</p> -->
+    <hr>
+
+
     <div class="my-3 fs-3 fw-bold">Movies {{ profile.username }} liked</div>
+    <span :v-if="!like_count">{{ like_count }} User didn't pick any movies for like yet :(</span>
     <div>
       <swiper
       class="swiper"
       :options="swiperOption"
       >
         <swiper-slide class="bg-black" v-for="movie in profile.like_movies" :key="movie.pk">
-          <router-link :to="{ name: 'detail', params: { moviePk: movie.pk } }">
+          <!-- <div class="test">{{ movie }}</div> -->
+          <router-link :to="{ name: 'detail', params: { moviePk: movie.id } }">
             <div class="card" style="width: 12rem;">
-              <img :src="poster_url(movie.poster_path)" class="card-img-top" alt="...">
+              <img :src="poster_url(movie.poster_path)" class="card-img-top" alt="like movie">
               <div class="card-body position-absolute bottom-0 start-0">
                 <p class="card-text text-white">{{ movie.title }}</p>
               </div>
@@ -31,8 +31,9 @@
         <div class="swiper-button-next" slot="button-next"></div>
       </swiper>
     </div>
+    <hr>
     <div class="my-3 fs-3 fw-bold">{{ profile.username }}'s reviews</div>
-    <!-- <p>작성한 리뷰들 : {{ profile.reviews }}</p> -->
+    <span :v-if="!review_count">{{ review_count }} User didn't write any review yet :(</span>
     <div v-for="review in profile.reviews" :key="review.pk">
       <div class="card mb-3 bg-black" style="max-width: 450px;">
         <div class="row g-0">
@@ -43,14 +44,10 @@
           </div>
           <div class="col-md-9">
             <div class="card-body mt-3">
-              <!-- <h5 class="card-title">Card title</h5> -->
               <i class="fa-solid fa-star">{{ review.score }}</i>
               <p class="card-text">{{review.content}}</p>
               
               <p class="card-text">last edit : {{review.updated_at | getDate}}  </p>
-              <!-- <p class="card-text"><small>
-                last edit : {{review.updated_at}}                
-                </small></p> -->
             </div>
           </div>
         </div>
@@ -75,7 +72,13 @@ export default {
     SwiperSlide,
   },
   computed: {
-    ...mapGetters(["profile"])
+    ...mapGetters(["profile"]),
+    like_count () {
+      return this.profile.like_movies?.length
+    },
+    review_count () {
+      return this.profile.reviews?.length
+    },
   },
   methods: {
     ...mapActions(["fetchProfile", "fetch"]),
@@ -114,5 +117,7 @@ export default {
 </script>
 
 <style>
-
+.test {
+  min-height: 1000px;
+}
 </style>
