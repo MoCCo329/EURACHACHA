@@ -1,13 +1,15 @@
 <template>
   <div>
-    <ul>
+    <div class="my-3 fs-3 fw-bold">CRITIC REVIEWS FOR MOVIE</div>
+    <div>
       <movie-review-item
+        class="mb-2"
         v-for="review in reviews"
         :review="review"
         :key="review.pk">
       </movie-review-item>
-    </ul>
-
+    </div>
+    <hr>
     <movie-review-form></movie-review-form>
   </div>
 </template>
