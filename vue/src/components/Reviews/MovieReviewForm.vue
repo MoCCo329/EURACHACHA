@@ -1,7 +1,7 @@
 <template>
   <div>
     <label for="review" class="form-label my-3 fs-3 fw-bold">REVIEW</label><br>
-    <form @submit.prevent="onSubmit">
+    <form :v-if="isValid" @submit.prevent="onSubmit">
       <div class="mb-3">
         <i class='bx bx-user'></i><span class="text-white"> {{ currentUser.username }} </span>
         <div class="d-flex mt-1">
@@ -12,6 +12,7 @@
         <div id="reviewHelp" class="form-text">Don't forget to give score. Thank you for your valuable review.</div>
       </div>
     </form>
+    <div :v-if="!isValid">Sorry, You can write only one review.</div>
   </div>
 </template>
 
@@ -27,7 +28,12 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["movieDetail", "currentUser"]),
+    ...mapGetters(["movieDetail", "currentUser", "reviews"]),
+    isValid () {
+      return this.reviews.every((review) => {
+        return review.user.username !== this.currentUser.username
+      })
+    },
   },
   methods: {
     ...mapActions(["createReview"]),

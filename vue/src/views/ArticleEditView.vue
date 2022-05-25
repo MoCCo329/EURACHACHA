@@ -1,7 +1,7 @@
 <template>
   <div>
-    여기는 ArticleEdit
-
+    <div class="my-3 fs-3 fw-bold">Article Edit</div>
+    <hr>
     <article-forms :article="article" :action="actions"></article-forms>
   </div>
 </template>

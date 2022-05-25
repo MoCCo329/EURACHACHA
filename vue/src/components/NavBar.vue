@@ -1,5 +1,6 @@
 <template>
   <nav>
+    {{ currentUser }}
     <ul class="nav-list">
       <li>
         <router-link :to="{ name: 'home' }">
