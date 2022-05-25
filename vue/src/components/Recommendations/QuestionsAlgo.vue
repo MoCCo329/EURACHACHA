@@ -5,8 +5,10 @@
     <release-date-q v-if="randomQ[state] === 'releaseDate'" @releaseDate="getReleaseDate" @changeQ="changeQ"></release-date-q>
     <runtime-q v-if="randomQ[state] === 'runtime'" @runtime="getRuntime" @changeQ="changeQ"></runtime-q>
 
+    
     <answer class="d-flex" v-if="state > 2">
       <!-- {{ questions }} -->
+      <div class="fs-2 hideAfter5Sec">Just a minute..We are choosing carefully</div>
       <div class="mx-3" v-for="movie in questions" :key="movie.pk">
       <!-- <img :src="poster_url(movie.poster_path)" alt="..."> -->
       <router-link class="contain" :to="{ name: 'detail', params: { moviePk: movie.pk } }">
@@ -19,9 +21,10 @@
               <p class="card-text text-white">{{ movie.title }}</p>
             </div>
           </div>
-        </router-link>
-    </div>
+      </router-link>
       
+    </div>
+    <!-- <div class="fs-2">Here's Our Recommendations. Hope you enjoy it!</div>  -->
     </answer>
 
   </div>
@@ -104,5 +107,16 @@ export default {
 </script>
 
 <style>
+.hideAfter5Sec {
+  animation: hideAnimation 0s ease-in 5s;
+  animation-fill-mode: forwards;
+}
 
+@keyframes hideAnimation {
+  to {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+  }
+}
 </style>
