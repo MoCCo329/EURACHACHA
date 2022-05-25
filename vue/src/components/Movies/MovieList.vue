@@ -8,15 +8,15 @@
       <swiper-slide class="bg-black" v-for="movie in movieList" :key="movie.pk">
         <router-link :to="{ name: 'detail', params: { moviePk: movie.pk } }">
           <div class="a">
-          <div class="card screen" style="width: 12rem;">
-            <img :src="poster_url(movie.poster_path)" class="card-img-top" alt="...">
-            <div class="card-body">
-              <div class="top">{{ movie.title }}</div>
-              <div class="bottom">
-                <i class="fa-solid fa-hourglass-end"> {{ movie.runtime }}</i> min.
-                <div>{{movie.tagline}}</div>
-              </div>     
-            </div>
+            <div class="card screen" style="width: 12rem;">
+              <img :src="poster_url(movie.poster_path)" class="card-img-top" alt="...">
+              <div class="card-body">
+                <div class="top">{{ movie.title }}</div>
+                <div class="bottom">
+                  <i class="fa-solid fa-hourglass-end"> {{ movie.runtime }}</i> min.
+                  <div>{{movie.tagline}}</div>
+                </div>     
+              </div>
             </div>
           </div>
         </router-link>

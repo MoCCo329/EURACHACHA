@@ -4,7 +4,8 @@
     <!-- <login-modal></login-modal> -->
     <div class="article-head">
       <i class='bx bx-chat'></i>
-      <span class="text fs-7 fw-bold">게시판은 영화에 대한 유용한 정보나 의견을 공유하고 서로 도움을 받을 수 있는 소통하는 공간입니다. <br>다양한 의견과 글을 자유롭게 게시하고 공유해주세요.</span>
+      <span class="text fs-7 fw-bold">The bulletin board is a communication space where you can share useful information or opinions about movies and get help from each other.<br>
+      Please feel free to post and share various opinions and articles.</span>
     </div>
     
     <div class="article-top">

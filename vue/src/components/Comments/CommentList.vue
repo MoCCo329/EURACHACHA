@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="my-3 fs-3 fw-bold">COMMENTS FOR ARTICLE</div>
-    <ul>
+    <ul class="comment-list">
       <comment-list-item
         v-for="comment in articleComments"
         :comment="comment"
@@ -9,6 +9,7 @@
       </comment-list-item>
     </ul>
 
+    <hr>
     <comment-list-form></comment-list-form>
   </div>
 </template>
@@ -38,5 +39,8 @@ export default {
 </script>
 
 <style>
-
+.comment-list {
+  list-style: none;
+  padding: 0;
+}
 </style>

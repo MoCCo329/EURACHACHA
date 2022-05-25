@@ -1,15 +1,16 @@
 <template>
   <div class="log-in-box">
-    <div class="login-text my-3 fs-3 fw-bold">Login</div>
+    <div class="login-text fs-3 fw-bold">Login</div>
     <account-error-list v-if="isAuthError"></account-error-list>
+
     <form @submit.prevent="login(credentials)">
       <div class="login-input">
         <!-- <label for="username">username: </label> -->
-        <input class="w-50 username" v-model="credentials.username" type="text" id="username" required placeholder="  Username">
+        <input class="w-50 username mb-2" v-model="credentials.username" type="text" id="username" required placeholder="  Username">
       </div>
       <div>
         <!-- <label for="password">password: </label> -->
-        <input class="w-50 password" v-model="credentials.password" type="password" id="password" required placeholder="  Password">
+        <input class="w-50 password mb-1" v-model="credentials.password" type="password" id="password" required placeholder="  Password">
       </div>
       <button class="btn btn-light w-50 mt-3 rounded-pill" type="submit">Login</button>
     </form>
@@ -17,8 +18,8 @@
 </template>
 
 <script>
-import AccountErrorList from "../components/Accounts/AccountErrorList.vue"
 import { mapActions, mapGetters } from "vuex"
+import AccountErrorList from "../components/Accounts/AccountErrorList.vue"
 
 export default {
   name: "LoginView",
@@ -53,21 +54,16 @@ export default {
 }
 .log-in-box .login-text {
   min-width: 300px;
-}
-
-.login-input {
-  height: 50px;
+  margin-bottom: 2rem;
 }
 
 .username {
   min-width: 300px;
   border-radius: 8px;
-  /* border-top-right-radius: 8px; */
 }
 
 .password {
   min-width: 300px;
   border-radius: 8px;
-  /* border-bottom-right-radius: 8px; */
 }
 </style>

@@ -27,21 +27,15 @@
       </div>
 
       <div class="review-edit d-flex" v-if="isEditing">
-        <!-- <label for="score">Score: </label> -->
-        <div class="me-3">{{currentUser.username}} </div>
         <input type="number" min="0" max="10" step="1" v-model="payload.score" required >
-        <!-- <label for="review">Review: </label>
-        <input type="text" id="review" v-model="payload.content" required> -->
-        <input type="text" class="form-control mx-3" id="review" aria-describedby="reviewHelp" v-model="payload.content" required>
-        <button type="submit" class="btn btn-primary me-3" @click="onUpdate">Update</button>
+        <input type="text" class="form-control mx-2" id="review" aria-describedby="reviewHelp" v-model="payload.content" required>
+        <button type="submit" class="btn btn-primary me-2" @click="onUpdate">Update</button>
         <button type="submit" class="btn btn-primary" @click="doCancel">Cancle</button>
       </div>
     </div>
 
     <div class="my-2" v-if="currentUser.username === review.user.username && !isEditing">
-      <!-- <button type="button" class="btn btn-primary btn-sm" @click="switchIsEditing">Edit</button> -->
       <i class="fa-solid fa-pencil" @click="switchIsEditing"></i>
-      <!-- <button type="button" class="btn btn-primary btn-sm ms-2" @click="deleteReview(payload)">Delete</button> -->
       <i class="fa-solid fa-trash-can mx-3" @click="deleteReview(payload)"></i>
     </div>
     <hr>
@@ -80,7 +74,7 @@ export default {
       if (this.review.updated_at === this.review.created_at) {
         return ""
       } else {
-        return `updated at : ${this.time(this.article.updated_at)} | `
+        return `updated at : ${this.time(this.review.updated_at)} | `
       }
     },
   },

@@ -153,6 +153,7 @@ export default {
       console.log("fetch Background Image", imgURL)
       commit("SET_BACKGROUND_IMAGE", imgURL)
     },
+    
     fetchSearch({ commit }, input) {
       const data = { query: input }
       movies

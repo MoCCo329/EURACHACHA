@@ -8,9 +8,9 @@
     
     <div style="height: 100px"></div>
     <div class="my-container mx-auto d-flex justify-content-center align-items-center flex-column ">
-    <img src="./main.gif" alt=".." class="main-img">
-    <button v-show="clicked" class="btn btn-light my-5 btn-lg" @click="[selectIntersections(), hide()]"> 1 : Based on Your Likes</button>
-    <button v-show="clicked" class="btn btn-light btn-lg" @click="[selectQuestions(), hide()]"> 2 : Based on a few Questions</button>
+    <img src="../assets/main.gif" alt="recommendation-img" class="main-img">
+    <button v-show="clicked" class="reco-btn btn btn-light my-5 btn-lg" @click="[selectIntersections(), hide()]"> 1 : Based on Your Likes</button>
+    <button v-show="clicked" class="reco-btn btn btn-light btn-lg" @click="[selectQuestions(), hide()]"> 2 : Based on a few Questions</button>
     
     <div class="my-3">
       <intersections-algo v-if="selectedAlgo === 'intersections'"></intersections-algo>
@@ -65,5 +65,9 @@ export default {
   border-radius: 30px;
   width: 450px;
   height: 450px;
+}
+
+.reco-btn {
+  min-width: 302px;
 }
 </style>

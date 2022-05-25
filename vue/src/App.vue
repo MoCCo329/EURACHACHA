@@ -1,18 +1,20 @@
 <template>
-  <div id="app" :style="{'background-image': backgroundImage}">
-    <div class="sidebar">
-      <div class="logo">
-        <img class="logo-img" src="../public/logo.png">
+  <div id="app">
+    <div class="background" :style="{'background-image': backgroundImage}">
+      <div class="sidebar">
+        <div class="logo">
+          <img class="logo-img" src="./assets/logo.png">
+        </div>
+        <!-- <i id="btn" class="bx bx-menu" ></i> -->
+        <nav-bar class="nav-list"></nav-bar>
       </div>
-      <!-- <i id="btn" class="bx bx-menu" ></i> -->
-      <nav-bar class="nav-list"></nav-bar>
-    </div>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-2"></div>
-        <div class="router-view col-10">
-          <router-view></router-view>
+      <div class="container">
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="router-view col-10">
+            <router-view></router-view>
+          </div>
         </div>
       </div>
     </div>
@@ -44,17 +46,21 @@ import { mapActions, mapGetters } from "vuex"
   font-family: sans-serif;
 }
 #app {
-  background-color: black;
-  background-image: fixed;
-  background-repeat: no-repeat;
-  background-size: 60%;
-  background-position: 60% 0%;
-  /* filter: blur(5px); */
   position: relative;
+  background-color: black;
   min-height: 100vh;
   width: 100%;
   overflow: hidden;
   color: white;
+}
+#app .background {
+  background-color: black;
+  /* background-image: fixed; */
+  background-repeat: no-repeat;
+  background-size: 60%;
+  /* background-size: cover; */
+  background-position: 60% 0%;
+  /* filter: blur(5px); */
 }
 .sidebar {
   position: fixed;
@@ -73,13 +79,4 @@ import { mapActions, mapGetters } from "vuex"
 .sidebar .logo .logo-img {
   width: 100%;
 }
-/* .sidebar #btn {
-  display: flex;
-  justify-content: right;
-  color: white;
-  font-size: 20px;
-  width: 100%;
-  line-height: 50px;
-  transform: translateX(-50%)
-} */
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="my-3 fs-3 fw-bold">CRITIC REVIEWS FOR MOVIE</div>
-    <div>
+    <div class="my-3 fs-3 fw-bold">CRITIC REVIEWS FOR MOVIE ({{ review_count }})</div>
+    <div class="review-list">
       <movie-review-item
         class="mb-2"
         v-for="review in reviews"
@@ -9,7 +9,8 @@
         :key="review.pk">
       </movie-review-item>
     </div>
-    
+
+    <hr>
     <movie-review-form></movie-review-form>
   </div>
 </template>
@@ -27,7 +28,10 @@ export default {
     MovieReviewForm,
   },
   computed: {
-    ...mapGetters(["reviews"])
+    ...mapGetters(["reviews"]),
+    review_count () {
+      return this.reviews.length
+    }
   },
   methods: {
     ...mapActions(["fetchMovieDetailReview"])
@@ -42,5 +46,7 @@ export default {
 </script>
 
 <style>
-
+.review-list {
+  min-height: 80px;
+}
 </style>

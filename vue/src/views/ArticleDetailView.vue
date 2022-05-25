@@ -37,7 +37,6 @@
     </div>
 
     <hr>
-    <hr>
     <comment-list></comment-list>
   </div>
 </template>

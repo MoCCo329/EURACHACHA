@@ -1,9 +1,14 @@
 <template>
   <div>
+    <label for="comment" class="form-label my-3 fs-3 fw-bold">COMMENT</label><br>
     <form @submit.prevent="onSubmit">
-      <label for="comment">comment: </label>
-      <input type="text" id="comment" v-model="content" required>
-      <button>Comment</button>
+      <div class="mb-3">
+        <i class='bx bx-user'></i><span class="text-white"> {{ currentUser.username }} </span>
+        <div class="d-flex mt-1">
+          <input type="text" class="form-control me-2" id="comment" aria-describedby="reviewHelp" placeholder="Please write your review"  v-model="content" required>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
     </form>
   </div>
 </template>
@@ -19,7 +24,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["article"]),
+    ...mapGetters(["currentUser", "article"]),
   },
   methods: {
     ...mapActions(["createComment"]),
