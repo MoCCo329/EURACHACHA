@@ -35,7 +35,6 @@
 </template>
 
 
-
 <script>
 import { mapActions, mapGetters } from "vuex"
 import { Swiper, SwiperSlide } from "vue-awesome-swiper";

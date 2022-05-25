@@ -2,10 +2,10 @@
   <div>
     <div class="my-3 fs-3 fw-bold">{{ profile.username }}'s Profile</div>
     <hr>
+    <div class="my-3 fs-3 fw-bold">{{ profile.username }}</div>
 
-
-    <div class="my-3 fs-3 fw-bold">Movies {{ profile.username }} liked</div>
-    <span :v-if="!like_count">{{ like_count }} User didn't pick any movies for like yet :(</span>
+    <div class="my-3 fs-3 fw-bold">Movies {{ profile.username }} liked ({{ like_count }})</div>
+    <!-- <span :v-if="!like_count">User didn't pick any movies for like yet :(</span> -->
     <div>
       <swiper
       class="swiper"
@@ -32,8 +32,8 @@
       </swiper>
     </div>
     <hr>
-    <div class="my-3 fs-3 fw-bold">{{ profile.username }}'s reviews</div>
-    <span :v-if="!review_count">{{ review_count }} User didn't write any review yet :(</span>
+    <div class="my-3 fs-3 fw-bold">{{ profile.username }}'s reviews ({{ review_count }})</div>
+    <!-- <span :v-if="!review_count">{{ review_count }} User didn't write any review yet :(</span> -->
     <div v-for="review in profile.reviews" :key="review.pk">
       <div class="card mb-3 bg-black" style="max-width: 450px;">
         <div class="row g-0">
@@ -117,7 +117,4 @@ export default {
 </script>
 
 <style>
-.test {
-  min-height: 1000px;
-}
 </style>

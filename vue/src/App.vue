@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :style="{'background-image': backgroundImage}">
     <div class="sidebar">
       <div class="logo">
         <img class="logo-img" src="../public/logo.png">
@@ -21,18 +21,18 @@
 
 <script>
 import NavBar from "./components/NavBar.vue"
-import { mapActions } from "vuex"
+import { mapActions, mapGetters } from "vuex"
 
 
   export default {
     name: "App",
     components: { NavBar },
+    computed: {
+      ...mapGetters(["backgroundImage"])
+    },
     methods: {
       ...mapActions(["fetchCurrentUser"])
     },
-    created() {
-      this.fetchCurrentUser()
-    }
   }
 </script>
 
@@ -45,6 +45,10 @@ import { mapActions } from "vuex"
 }
 #app {
   background-color: black;
+  background-image: fixed;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  /* filter: blur(5px); */
   position: relative;
   min-height: 100vh;
   width: 100%;

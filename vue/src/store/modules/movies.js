@@ -11,6 +11,7 @@ export default {
     movieDetail: {},
     movieRelatedReleaseDate: [],
     movieRelatedGenre: [],
+    backgroundImage: "",
   },
 
   getters: {
@@ -21,6 +22,7 @@ export default {
     movieDetail: (state) => state.movieDetail,
     movieRelatedReleaseDate: (state) => state.movieRelatedReleaseDate,
     movieRelatedGenre: (state) => state.movieRelatedGenre,
+    backgroundImage: (state) => state.backgroundImage
   },
 
   mutations: {
@@ -31,6 +33,7 @@ export default {
     SET_MOVIE_DETAIL: (state, movieDetail) => (state.movieDetail = movieDetail),
     SET_RELATED_RELEASE_DATE: (state, movieRelated) => (state.movieRelatedReleaseDate = movieRelated),
     SET_RELATED_GENRE: (state, movieRelated) => (state.movieRelatedGenre = movieRelated),
+    SET_BACKGROUND_IMAGE: (state, imgURL) => (state.backgroundImage = imgURL)
   },
 
   actions: {
@@ -142,5 +145,9 @@ export default {
         })
         .catch((err) => console.error(err.response))
     },
+
+    fetchBackgroundImage({ commit }, imgURL) {
+      commit("SET_BACKGROUND_IMAGE", imgURL)
+    }
   }
 }

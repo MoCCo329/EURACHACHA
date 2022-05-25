@@ -1,4 +1,5 @@
 <template>
+  <!-- <div class="main-div" :style="{ background: bg }"> -->
   <div>
     <div class="my-3 fs-3 fw-bold">MovieDetail</div>
     <!-- <div>{{ movieDetail }}</div> -->
@@ -115,20 +116,18 @@ export default {
     like_count () {
       return this.movieDetail.like_users?.length
     },
+    backdropPath () {
+      return this.movieDetail.backdrop_path
+    },
   },
   methods: {
-    ...mapActions(["fetchMovieDetail", "fetchMovieDetailRelated", "likeMovie"]),
+    ...mapActions(["fetchMovieDetail", "fetchMovieDetailRelated", "likeMovie", "fetchBackgroundImage"]),
     doLikeMovie () {
       return this.likeMovie(this.$route.params.moviePk)
     },
     poster_url(poster_path) {
       return `https://image.tmdb.org/t/p/w500` + poster_path
-    }
-  },
-  created () {
-    const moviePk = this.$route.params.moviePk
-    this.fetchMovieDetail(moviePk)
-    this.fetchMovieDetailRelated(moviePk)
+    },
   },
   data() {
     return {
@@ -147,6 +146,17 @@ export default {
           } 
       },
     }
+  },
+  created () {
+    const moviePk = this.$route.params.moviePk
+    this.fetchMovieDetail(moviePk)
+    this.fetchMovieDetailRelated(moviePk)
+    const backdropPath = this.movieDetail.backdrop_path
+    console.log(backdropPath)
+    this.fetchBackgroundImage(`url(https://image.tmdb.org/t/p/w500${backdropPath})`)
+  },
+  destroyed () {
+    this.fetchBackgroundImage("")
   }
 }
 </script>
