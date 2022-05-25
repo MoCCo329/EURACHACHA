@@ -1,6 +1,6 @@
 <template>
   <div class="log-in-box">
-    <div class="my-3 fs-3 fw-bold">Login</div>
+    <div class="login-text my-3 fs-3 fw-bold">Login</div>
     <account-error-list v-if="isAuthError"></account-error-list>
     <form @submit.prevent="login(credentials)">
       <div class="login-input">
@@ -46,10 +46,13 @@ export default {
 .log-in-box {
   display: flex;
   justify-content: center;
-  align-items: stretch;
+  align-items: end;
   flex-direction: column;
   max-width: 500px;
   min-height: 80vh;
+}
+.log-in-box .login-text {
+  min-width: 300px;
 }
 
 .login-input {
@@ -57,11 +60,13 @@ export default {
 }
 
 .username {
+  min-width: 300px;
   border-radius: 8px;
   /* border-top-right-radius: 8px; */
 }
 
 .password {
+  min-width: 300px;
   border-radius: 8px;
   /* border-bottom-right-radius: 8px; */
 }
