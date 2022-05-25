@@ -112,7 +112,7 @@ export default {
     SwiperSlide,
   },
   computed: {
-    ...mapGetters(["movieDetail", "movieRelatedReleaseDate", "movieRelatedGenre"]),
+    ...mapGetters(["movieDetail", "movieRelatedReleaseDate", "movieRelatedGenre", "backgroundImage"]),
     like_count () {
       return this.movieDetail.like_users?.length
     },
@@ -160,14 +160,14 @@ export default {
     console.log(backdropPath)
     this.fetchBackgroundImage(`url(https://image.tmdb.org/t/p/w500${backdropPath})`)
   },
+    updated () {
+    if (!this.bacmkgroundImage && this.backdropPath) {
+      this.fetchBackgroundImage(`url(https://image.tmdb.org/t/p/w500${this.backdropPath})`)
+    }
+  },
   destroyed () {
     this.fetchBackgroundImage("")
   },
-  updated () {
-    const backdropPath = this.movieDetail.backdrop_path
-    console.log(backdropPath)
-    this.fetchBackgroundImage(`url(https://image.tmdb.org/t/p/w500${backdropPath})`)
-  }
 }
 </script>
 

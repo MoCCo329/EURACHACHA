@@ -12,6 +12,7 @@ export default {
     movieRelatedReleaseDate: [],
     movieRelatedGenre: [],
     backgroundImage: "",
+    searchResponse: "",
   },
 
   getters: {
@@ -22,7 +23,8 @@ export default {
     movieDetail: (state) => state.movieDetail,
     movieRelatedReleaseDate: (state) => state.movieRelatedReleaseDate,
     movieRelatedGenre: (state) => state.movieRelatedGenre,
-    backgroundImage: (state) => state.backgroundImage
+    backgroundImage: (state) => state.backgroundImage,
+    searchResponse: (state) => state.searchResponse,
   },
 
   mutations: {
@@ -33,7 +35,8 @@ export default {
     SET_MOVIE_DETAIL: (state, movieDetail) => (state.movieDetail = movieDetail),
     SET_RELATED_RELEASE_DATE: (state, movieRelated) => (state.movieRelatedReleaseDate = movieRelated),
     SET_RELATED_GENRE: (state, movieRelated) => (state.movieRelatedGenre = movieRelated),
-    SET_BACKGROUND_IMAGE: (state, imgURL) => (state.backgroundImage = imgURL)
+    SET_BACKGROUND_IMAGE: (state, imgURL) => (state.backgroundImage = imgURL),
+    SET_SEARCH_RESPONSE: (state, response) => (state.searchResponse = response),
   },
 
   actions: {
@@ -149,6 +152,21 @@ export default {
     fetchBackgroundImage({ commit }, imgURL) {
       console.log("fetch Background Image", imgURL)
       commit("SET_BACKGROUND_IMAGE", imgURL)
-    }
-  }
+    },
+    fetchSearch({ commit }, input) {
+      const data = { query: input }
+      movies
+        .search(data)
+        .then((res) => {
+         console.log(res)
+         commit("SET_SEARCH_RESPONSE", res.data)
+        })
+        .catch((err) => {
+          console.error(err.response)
+          if (err.response.state === 404) {
+            router.push({ name: "NotFound404" })
+          }
+        })
+    },  
+  },
 }

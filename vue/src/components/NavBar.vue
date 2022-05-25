@@ -9,9 +9,23 @@
       </li>
 
       <li>
+        <router-link :to="{ name: 'search' }">
+          <i class='bx bx-search-alt-2'></i>
+          <span class="links-name">Search</span>
+        </router-link>
+      </li>
+
+      <li>
         <router-link :to="{ name: 'recommendations' }">
           <i class='bx bxs-direction-right' ></i>
           <span class="links-name">Recommendations</span>
+        </router-link>
+      </li>
+      
+      <li v-if="isLoggedIn">
+        <router-link :to="{ name: 'articles' }">
+          <i class='bx bxs-book-content' ></i>
+          <span class="links-name"> Articles</span>
         </router-link>
       </li>
 
@@ -40,13 +54,6 @@
         <router-link :to="{ name: 'signup' }">
           <i class='bx bx-user-plus' ></i>
           <span class="links-name"> Signup</span>
-        </router-link>
-      </li>
-
-      <li v-if="isLoggedIn">
-        <router-link :to="{ name: 'articles' }">
-          <i class='bx bxs-book-content' ></i>
-          <span class="links-name"> Articles</span>
         </router-link>
       </li>
     </ul>

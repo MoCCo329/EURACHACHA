@@ -50,5 +50,12 @@ export default {
       method: "post",
       url: `${END_POINT}/${moviePk}/like/`
     })
+  },
+  search(input) {
+    return api({
+      method: "post",
+      url: `${END_POINT}/search/`,
+      data: input
+    })
   }
 }

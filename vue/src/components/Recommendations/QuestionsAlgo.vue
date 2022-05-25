@@ -60,7 +60,7 @@ export default {
       const randomList = ["genre", "releaseDate", "runtime"]
       .sort(() => Math.random() - 0.5)
       return randomList
-    }
+    },
   },
   methods: {
     ...mapActions(["fetchQuestions"]),
@@ -96,9 +96,9 @@ export default {
   },
   created () {
     this.state = 0
-    this.genre = this.getRandomInt(1, 7)
-    this.releaseDate = this.getRandomInt(1, 6)
-    this.runtime = this.getRandomInt(1, 5)
+    this.genre = String(this.getRandomInt(1, 7))
+    this.releaseDate = String(this.getRandomInt(1, 6))
+    this.runtime = String(this.getRandomInt(1, 5))
   },
   // destroyed () {
   //   this.state = 0,
@@ -108,7 +108,7 @@ export default {
 
 <style>
 .hideAfter5Sec {
-  animation: hideAnimation 0s ease-in 5s;
+  animation: hideAnimation 0s ease-in 3s;
   animation-fill-mode: forwards;
 }
 

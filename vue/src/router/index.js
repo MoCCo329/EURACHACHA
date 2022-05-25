@@ -4,6 +4,7 @@ import store from "../store"
 
 import HomeView from "../views/HomeView.vue"
 import MovieDetailView from "../views/MovieDetailView.vue"
+import SearchMovieView from "../views/SearchMovieView.vue"
 
 import RecommendationsView from "../views/RecommendationsView.vue"
 
@@ -29,6 +30,11 @@ const routes = [
     path: "/movies/:moviePk",
     name: "detail",
     component: MovieDetailView
+  },
+  {
+    path: "/search",
+    name: "search",
+    component: SearchMovieView
   },
   {
     path: "/recommendations",
