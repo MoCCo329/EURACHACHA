@@ -151,12 +151,22 @@ export default {
     const moviePk = this.$route.params.moviePk
     this.fetchMovieDetail(moviePk)
     this.fetchMovieDetailRelated(moviePk)
+    // const backdropPath = this.movieDetail.backdrop_path
+    // console.log(backdropPath)
+    // this.fetchBackgroundImage(`url(https://image.tmdb.org/t/p/w500${backdropPath})`)
+  },
+  beforemounted () {
     const backdropPath = this.movieDetail.backdrop_path
     console.log(backdropPath)
     this.fetchBackgroundImage(`url(https://image.tmdb.org/t/p/w500${backdropPath})`)
   },
   destroyed () {
     this.fetchBackgroundImage("")
+  },
+  updated () {
+    const backdropPath = this.movieDetail.backdrop_path
+    console.log(backdropPath)
+    this.fetchBackgroundImage(`url(https://image.tmdb.org/t/p/w500${backdropPath})`)
   }
 }
 </script>

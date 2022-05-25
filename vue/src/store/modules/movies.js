@@ -147,6 +147,7 @@ export default {
     },
 
     fetchBackgroundImage({ commit }, imgURL) {
+      console.log("fetch Background Image", imgURL)
       commit("SET_BACKGROUND_IMAGE", imgURL)
     }
   }
