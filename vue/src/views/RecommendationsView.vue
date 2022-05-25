@@ -5,13 +5,14 @@
     <input type="radio" id="intersections" name="selectAlgo" v-model="intersections" value="Intersections" checked=true>
     <label for="questions">스무고개</label>
     <input type="radio" id="intersections" name="selectAlgo" v-model="questions" value="Questions"> -->
-    <div style="height: 200px"></div>
+    
+    <div style="height: 100px"></div>
     <div class="my-container mx-auto d-flex justify-content-center align-items-center flex-column ">
+    <img src="./main.gif" alt=".." class="main-img">
+    <button v-show="clicked" class="btn btn-light my-5 btn-lg" @click="[selectIntersections(), hide()]"> 1 : Based on Your Likes</button>
+    <button v-show="clicked" class="btn btn-light btn-lg" @click="[selectQuestions(), hide()]"> 2 : Based on a few Questions</button>
     
-    <button v-show="clicked" class="btn btn-success my-3" @click="[selectIntersections(), hide()]">Recommend Movies based on your likes</button>
-    <button v-show="clicked" class="btn btn-warning" @click="[selectQuestions(), hide()]">Recommend Movies based on few questions</button>
-    
-    <div>
+    <div class="my-3">
       <intersections-algo v-if="selectedAlgo === 'intersections'"></intersections-algo>
       <questions-algo v-if="selectedAlgo === 'questions'"></questions-algo>
     </div>
@@ -58,5 +59,11 @@ export default {
 <style>
 .my-container {
   height: 600px;
+}
+
+.main-img {
+  border-radius: 30px;
+  width: 450px;
+  height: 450px;
 }
 </style>

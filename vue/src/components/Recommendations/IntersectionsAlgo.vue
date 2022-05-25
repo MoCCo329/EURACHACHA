@@ -48,7 +48,7 @@ export default {
 
 .front {
   position: absolute;
-  background: gold;
+  background: linear-gradient(#BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
   transform: rotateY(-180deg);
 }
 

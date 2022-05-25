@@ -2,9 +2,9 @@
   <div>
     <div>
       <p class="fs-2">{{ genreQ[state] }}</p> 
-      <div>
+      <div class="d-flex justify-content-around mt-5">
         <button class="btn btn-primary" @click="emitAns(state, true)">Yes</button>
-        <button class="btn btn-primary" @click="emitAns(state, false)">No</button>
+        <button class="btn btn-danger" @click="emitAns(state, false)">No</button>
       </div>
     </div>
   </div>
