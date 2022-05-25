@@ -1,11 +1,18 @@
 
 <template>
-  <li>
-    <router-link :to="{ name: 'profile', params: { username: review.user.username } }">
-      {{ review.user.username }}
+  <div>
+    <router-link class="text-decoration-none" :to="{ name: 'profile', params: { username: review.user.username } }">
+      <span class="text-white"> {{ review.user.username }} </span>
     </router-link>
 
-    <span v-if="!isEditing">{{ payload.score }} | {{ payload.content }}</span>
+    <span v-if="!isEditing"> 
+      <i class="fa-solid fa-star">{{ payload.score }} </i>
+      <div>
+        {{ payload.content }} 
+      </div>
+      created_at - 댓글작성일시까지 넘겨줘야함
+      {{payload}}
+    </span>
 
     <span v-if="isEditing">
       <label for="score">Score: </label>
@@ -16,15 +23,20 @@
       <button @click="doCancel">Cancle</button>
     </span>
 
-    <span v-if="currentUser.username === review.user.username && !isEditing">
-      <button @click="switchIsEditing">Edit</button>
-      <button @click="deleteReview(payload)">Delete</button>
+    <span class="ms-3">
+      <!-- <button @click="doLikeReview">{{ like_count }}</button> -->
+      
+      <i class="fa-solid fa-thumbs-up" @click="doLikeReview"> {{ like_count }}</i>
     </span>
 
-    <span>
-      <button @click="doLikeReview">{{ like_count }}</button>
-    </span>
-  </li> 
+    <div v-if="currentUser.username === review.user.username && !isEditing">
+      <!-- <button type="button" class="btn btn-primary btn-sm" @click="switchIsEditing">Edit</button> -->
+      <i class="fa-solid fa-pencil" @click="switchIsEditing"></i>
+      <!-- <button type="button" class="btn btn-primary btn-sm ms-2" @click="deleteReview(payload)">Delete</button> -->
+      <i class="fa-solid fa-trash-can mx-3" @click="deleteReview(payload)"></i>
+    </div>
+    <hr>
+  </div> 
 </template>
 
 <script>

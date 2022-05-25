@@ -1,15 +1,87 @@
 <template>
   <div>
-    여기는 MovieDetail<br>
-
-    MovieDetail : <br>{{ movieDetail }}<hr>
-    ReleaseDate Related : <br>{{ movieRelatedReleaseDate }}<hr>
-    Genre Related: <br>{{ movieRelatedGenre }}<hr>
-    
-    <div>
-      <button @click="doLikeMovie">{{ like_count }}</button>
+    <div class="my-3 fs-3 fw-bold">MovieDetail - 장르 해결해야함</div>
+    <!-- <div>{{ movieDetail }}</div> -->
+    <!-- <img :src="poster_url(movieDetail.poster_path)" alt="...">  -->
+    <!-- <img :src="poster_url(movieDetail.backdrop_path)" alt="..."> -->
+    <!-- <div>{{movieDetail.title}}</div>
+    <div>{{movieDetail.release_date}}</div>
+    <div>{{movieDetail.overview}}</div>
+    <div>{{movieDetail.runtime}}</div>
+    <div>{{movieDetail.vote_average}}</div> -->
+    <div class="card mb-3 bg-black" style="max-width: 840px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img :src="poster_url(movieDetail.poster_path)" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{movieDetail.title}}</h5>
+            <p class="card-text">{{movieDetail.overview}}</p>
+            <p class="card-text"><small class="text-muted">
+              {{movieDetail.release_date}} {{movieDetail.runtime}} {{movieDetail.vote_average}}
+            </small></p>
+            <!-- 사용자가 누르면 하트 채워지고 비워지고 해야함 -->
+            <p><i class="fa-solid fa-heart" @click="doLikeMovie"> {{ like_count }}</i></p>
+          </div>
+        </div>
+      </div>
     </div>
 
+
+    <hr>
+    <!-- ReleaseDate Related : <br>{{ movieRelatedReleaseDate }} -->
+    <div class="my-3 fs-3 fw-bold">ReleaseDate Related</div>
+    <swiper
+    class="swiper"
+    :options="swiperOption"
+    >
+      <swiper-slide class="bg-black" v-for="movie in movieRelatedReleaseDate" :key="movie.pk">
+        <router-link :to="{ name: 'detail', params: { moviePk: movie.pk } }">
+          <div class="card" style="width: 12rem;">
+            <img :src="poster_url(movie.poster_path)" class="card-img-top" alt="...">
+            <div class="card-body position-absolute bottom-0 start-0">
+              <p class="card-text text-white">{{ movie.title }}</p>
+            </div>
+          </div>
+        </router-link>
+      </swiper-slide>
+      <div
+        class="swiper-pagination"
+        slot="pagination"
+        >
+      </div>
+      <div class="swiper-button-prev" slot="button-prev"></div>
+      <div class="swiper-button-next" slot="button-next"></div>
+    </swiper>
+
+    <hr>
+
+    <!-- Genre Related: <br>{{ movieRelatedGenre }} -->
+    <div class="my-3 fs-3 fw-bold">Genre Related</div>
+    <swiper
+    class="swiper"
+    :options="swiperOption"
+    >
+      <swiper-slide class="bg-black" v-for="movie in movieRelatedGenre" :key="movie.pk">
+        <router-link :to="{ name: 'detail', params: { moviePk: movie.pk } }">
+          <div class="card" style="width: 12rem;">
+            <img :src="poster_url(movie.poster_path)" class="card-img-top" alt="...">
+            <div class="card-body position-absolute bottom-0 start-0">
+              <p class="card-text text-white">{{ movie.title }}</p>
+            </div>
+          </div>
+        </router-link>
+      </swiper-slide>
+      <div
+        class="swiper-pagination"
+        slot="pagination"
+        >
+      </div>
+      <div class="swiper-button-prev" slot="button-prev"></div>
+      <div class="swiper-button-next" slot="button-next"></div>
+    </swiper>
+    <hr>
 
     <movie-review-list></movie-review-list>
   </div>
@@ -19,10 +91,15 @@
 import { mapActions, mapGetters } from "vuex"
 import MovieReviewList from "../components/Reviews/MovieReviewList.vue"
 
+import { Swiper, SwiperSlide } from "vue-awesome-swiper";
+import "swiper/css/swiper.css";
+
 export default {
   name: "MovieDetailView",
   components: {
     MovieReviewList,
+    Swiper,
+    SwiperSlide,
   },
   computed: {
     ...mapGetters(["movieDetail", "movieRelatedReleaseDate", "movieRelatedGenre"]),
@@ -34,12 +111,33 @@ export default {
     ...mapActions(["fetchMovieDetail", "fetchMovieDetailRelated", "likeMovie"]),
     doLikeMovie () {
       return this.likeMovie(this.$route.params.moviePk)
+    },
+    poster_url(poster_path) {
+      return `https://image.tmdb.org/t/p/w500` + poster_path
     }
   },
   created () {
     const moviePk = this.$route.params.moviePk
     this.fetchMovieDetail(moviePk)
     this.fetchMovieDetailRelated(moviePk)
+  },
+  data() {
+    return {
+          swiperOption: { 
+          slidesPerView: 5, 
+          spaceBetween: 10, 
+          slidesPerGroup: 5,
+          loop: true, 
+          pagination: { 
+              el: '.swiper-pagination', 
+              clickable: true, 
+            }, 
+          navigation: { 
+            nextEl: '.swiper-button-next', 
+            prevEl: '.swiper-button-prev' 
+          } 
+      },
+    }
   }
 }
 </script>
