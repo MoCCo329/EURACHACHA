@@ -64,7 +64,7 @@ export default {
       return randomList
     },
     isFinished () {
-      return !!this.questions
+      return this.questions!==""
     }
   },
   methods: {
@@ -108,6 +108,7 @@ export default {
   },
   created () {
     this.state = 0
+    this.fetchQuestions({ genre: "exit" })
     this.genre = String(this.getRandomInt(1, 6))
     this.releaseDate = String(this.getRandomInt(1, 5))
     this.runtime = String(this.getRandomInt(1, 5))

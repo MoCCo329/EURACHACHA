@@ -2,7 +2,7 @@
   <div id="app">
     <div class="sidebar">
       <div class="logo">
-        <img class="logo-img mb-3" src="./assets/logo.png">
+        <router-link :to="{ name: 'home' }"><img class="logo-img mb-3" src="./assets/logo.png"></router-link>
       </div>
       <!-- <i id="btn" class="bx bx-menu" ></i> -->
       <nav-bar class="nav-list"></nav-bar>
