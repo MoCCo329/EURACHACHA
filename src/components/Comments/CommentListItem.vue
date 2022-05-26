@@ -6,7 +6,7 @@
 
     <div class="comment-body">
       <div v-if="!isEditing">
-        <div class="comment-content">
+        <div class="comment-content font-kor">
           {{ payload.content }} 
         </div>
       </div>

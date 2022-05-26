@@ -4,7 +4,7 @@
     <!-- <login-modal></login-modal> -->
     <div class="article-head">
       <i class='bx bx-chat'></i>
-      <span class="text fs-7 fw-bold">The bulletin board is a communication space where you can share useful information or opinions about movies and get help from each other.<br>
+      <span class="text fs-7 fw-bold">This bulletin board is a communication space where you can share useful information or opinions about movies and get help from each other.<br>
       Please feel free to post and share various opinions and articles.</span>
     </div>
     
@@ -18,7 +18,7 @@
     <ul class="article-ul">
       <li class="article-li" v-for="article in articles" :key="article.pk">
         <div class="article">
-          <router-link class="router-link" :to="{ name: 'article', params: { articlePk: article.pk } }">
+          <router-link class="router-link font-k" :to="{ name: 'article', params: { articlePk: article.pk } }">
             {{ article.title }}<br>{{ article.created_at | time }}
           </router-link>
           <span class="article-detail">
@@ -39,7 +39,7 @@
       </router-link>
     </div>
 
-    <nav aria-label="Page navigation example">
+    <!-- <nav aria-label="Page navigation example">
       <ul class="pagination">
         <li class="page-item">
           <a class="page-link" href="" aria-label="Previous">
@@ -55,7 +55,7 @@
           </a>
         </li>
       </ul>
-    </nav>
+    </nav> -->
   </div>
 </template>
 

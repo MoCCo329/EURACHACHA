@@ -20,7 +20,7 @@
 
 
     <hr>
-    <div class="article-body">
+    <div class="article-body font-kor">
       <p class="article-content">{{ article.content }}</p>
 
 
@@ -116,9 +116,6 @@ export default {
 .article-detail-head .article-detail {
   align-self: center;
   letter-spacing: 1px;
-}
-.article-body {
-  
 }
 .article-body .article-content {
   font-size: 24px;

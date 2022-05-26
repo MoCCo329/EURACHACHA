@@ -2,12 +2,12 @@
   <div>
     <form @submit.prevent="onSubmit">
       <div>
-        <label class="article-label" for="title">title: </label>
-        <input class="article-input-title" type="text" id="title" v-model="newArticle.title">
+        <label class="article-label font-kor" for="title">title: </label>
+        <input class="article-input-title font-kor" type="text" id="title" v-model="newArticle.title">
       </div>
       <div>
-        <label class="article-label" for="content">contnet: </label>
-        <textarea class="article-input-content" type="text" id="content" v-model="newArticle.content"></textarea>
+        <label class="article-label font-kor" for="content">content: </label>
+        <textarea class="article-input-content font-kor" type="text" id="content" v-model="newArticle.content"></textarea>
       </div>
       <div class="d-flex justify-content-end">
         <button type="submit" class="btn btn-primary me-3">{{ action }}</button>

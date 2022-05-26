@@ -5,7 +5,7 @@
       <div class="mb-3">
         <i class='bx bx-user'></i><span class="text-white"> {{ currentUser.username }} </span>
         <div class="d-flex mt-1">
-          <input type="text" class="form-control me-2" id="comment" aria-describedby="reviewHelp" placeholder="Please write your review"  v-model="content" required>
+          <input type="text" class="form-control me-2 font-kor" id="comment" aria-describedby="reviewHelp" placeholder="Please write your review"  v-model="content" required>
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
       </div>

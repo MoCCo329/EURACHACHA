@@ -16,7 +16,7 @@
               <div class="bottom">
                 <i class="fa-solid fa-hourglass-end"> {{ movie.runtime }}</i> min.
                 <div>{{movie.tagline}}</div>
-              </div>     
+              </div>
             </div>
           </div>
           </div>
@@ -80,8 +80,6 @@ export default {
 </script>
 
 <style>
-
-
 .swiper {
   width: 100%;
   height: 100%;

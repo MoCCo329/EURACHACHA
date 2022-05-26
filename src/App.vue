@@ -43,7 +43,10 @@ import { mapActions } from "vuex"
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Vollkorn', serif;
+  font-family: 'Quicksand', sans-serif;
+}
+.font-kor {
+  font-family: 'Noto Sans KR', sans-serif;
 }
 #app {
   position: relative;

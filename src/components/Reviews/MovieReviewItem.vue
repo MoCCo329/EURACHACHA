@@ -9,7 +9,7 @@
       <div v-if="!isEditing">
         <div>
           <i class="fa-solid fa-star mb-3"></i><span class="fa-solid mb-3 mx-2"> {{ payload.score }} </span>
-          <div class="review-content">
+          <div class="review-content font-kor">
             {{ payload.content }} 
           </div>
         </div>
@@ -28,7 +28,7 @@
 
       <div class="review-edit d-flex" v-if="isEditing">
         <input type="number" min="0" max="10" step="1" v-model="payload.score" required >
-        <input type="text" class="form-control mx-2" id="review" aria-describedby="reviewHelp" v-model="payload.content" required>
+        <input type="text" class="form-control mx-2 font-kor" id="review" aria-describedby="reviewHelp" v-model="payload.content" required>
         <button type="submit" class="btn btn-primary me-2" @click="onUpdate">Update</button>
         <button type="submit" class="btn btn-primary" @click="doCancel">Cancle</button>
       </div>
