@@ -119,7 +119,7 @@ export default {
       comment
         .create(articlePk, body)
         .then((res) => {
-          console.log(res)
+          // console.log(res)
           commit("SET_ARTICLE_COMMENTS", res.data)
         })
         .catch((err) => console.error(err.response))

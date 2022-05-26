@@ -91,11 +91,11 @@ export default {
     },
 
     fetchProfile({ commit }, { username }) {  // 프로파일 받아와 저장
-      console.log(username)
+      // console.log(username)
       account
         .profile(username)
         .then((res) => {
-          console.log("fetchProfile", res)
+          // console.log("fetchProfile", res)
           commit("SET_PROFILE", res.data)
         })
         .catch((err) => {
