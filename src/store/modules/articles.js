@@ -40,7 +40,7 @@ export default {
       article
         .detail(articlePk)
         .then((res) => {
-          console.log("fetchArticle", res)
+          // console.log("fetchArticle", res)
           commit("SET_ARTICLE", res.data)
         })
         .catch((err) => {
@@ -56,7 +56,7 @@ export default {
       article
         .create(body)
         .then((res) => {
-          console.log("createArticle", res)
+          // console.log("createArticle", res)
           commit("SET_ARTICLE", res.data)
           router.push({
             name: 'article',
@@ -103,7 +103,7 @@ export default {
       comment
         .commentList(articlePk)
         .then((res) => {
-          console.log("fetchComments", res)
+          // console.log("fetchComments", res)
           commit("SET_ARTICLE_COMMENTS", res.data)
         })
         .catch((err) => {

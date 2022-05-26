@@ -101,7 +101,7 @@ export default {
       movies
         .detail(moviePk)
         .then((res) => {
-          console.log("fetchMovieDetail", res)
+          // console.log("fetchMovieDetail", res)
           commit("SET_MOVIE_DETAIL", res.data)
         })
         .catch((err) => {
@@ -116,7 +116,7 @@ export default {
       movies
         .relatedReleaseDate(moviePk)
         .then((res) => {
-          console.log("relatedReleaseDate", res)
+          // console.log("relatedReleaseDate", res)
           commit("SET_RELATED_RELEASE_DATE", res.data.slice(0, 20))
         })
         .catch((err) => {
@@ -128,7 +128,7 @@ export default {
       movies
         .relatedGenre(moviePk)
         .then((res) => {
-          console.log("relatedGenre", res)
+          // console.log("relatedGenre", res)
           commit("SET_RELATED_GENRE", res.data.slice(0, 20))
         })
         .catch((err) => {
@@ -149,7 +149,7 @@ export default {
     },
 
     fetchBackgroundImage({ commit }, imgURL) {
-      console.log("fetch Background Image", imgURL)
+      // console.log("fetch Background Image", imgURL)
       commit("SET_BACKGROUND_IMAGE", imgURL)
     },
     
@@ -158,7 +158,7 @@ export default {
       movies
         .search(data)
         .then((res) => {
-         console.log(res)
+        //  console.log(res)
          commit("SET_SEARCH_RESPONSE", res.data)
         })
         .catch((err) => {

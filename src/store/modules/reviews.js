@@ -19,7 +19,7 @@ export default {
       review
         .reviewList(moviePk)
         .then((res) => {
-          console.log("fetchMovieDetailReviewList", res.data)
+          // console.log("fetchMovieDetailReviewList", res.data)
           commit("SET_REVIEW", res.data)
         })
         .catch((err) => {
@@ -35,7 +35,7 @@ export default {
       review
         .create(moviePk, body)
         .then((res) => {
-          console.log("createReview", res)
+          // console.log("createReview", res)
           commit("SET_REVIEW", res.data)
         })
         .catch((err) => console.error(err.response))
@@ -46,7 +46,7 @@ export default {
       review
         .update(moviePk, reviewPk, body)
         .then((res) => {
-          console.log("updateReview", res)
+          // console.log("updateReview", res)
           commit("SET_REVIEW", res.data)
         })
         .catch((err) => console.error(err.response))

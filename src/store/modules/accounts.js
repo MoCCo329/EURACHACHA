@@ -29,7 +29,7 @@ export default {
       account
         .login(credentials)
         .then((res) => {
-          console.log("login", res)
+          // console.log("login", res)
           const token = res.data.key
           commit("SET_TOKEN", token)
           localStorage.setItem("token", token)
@@ -46,7 +46,7 @@ export default {
       account
         .signup(credentials)
         .then((res) => {
-          console.log("signup", res)
+          // console.log("signup", res)
           const token = res.data.key
           commit("SET_TOKEN", token)
           localStorage.setItem("token", token)  // 로컬에 저장
@@ -76,8 +76,8 @@ export default {
         account
           .currentUser()
           .then((res) => {
-            console.log("fetchCurrentUser", res.data)
-            console.log(localStorage.token)
+            // console.log("fetchCurrentUser", res.data)
+            // console.log(localStorage.token)
             commit("SET_CURRENT_USER", res.data)
           })
           .catch((err) => {

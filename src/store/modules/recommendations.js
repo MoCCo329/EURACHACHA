@@ -22,11 +22,11 @@ export default {
       recommendations
         .intersections()
         .then((res) => {
-          console.log("Set_Intersections", res)
+          // console.log("Set_Intersections", res)
           commit("SET_INTERSECTIONS", res.data)
         })
         .catch((err) => {
-          console.error(err.response)
+          // console.error(err.response)
           if (err.response.status === 404) {
             router.push({ name: "NotFound404" })
           }
@@ -38,7 +38,7 @@ export default {
       recommendations
         .questions(body)
         .then((res) => {
-          console.log("Set_Questions", res)
+          // console.log("Set_Questions", res)
           commit("SET_QUESTIONS", res.data)
         })
         .catch((err) => {
