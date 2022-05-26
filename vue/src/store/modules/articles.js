@@ -25,9 +25,9 @@ export default {
   },
 
   actions: {
-    fetchArticles({ commit }) {
+    fetchArticles({ commit }, page) {
       article
-        .articleList()
+        .articleList(page)
         .then((res) => {
           commit("SET_ARTICLES", res.data)
         })

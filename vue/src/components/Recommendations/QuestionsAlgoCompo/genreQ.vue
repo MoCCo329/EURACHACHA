@@ -68,6 +68,7 @@ export default {
   created () {
     this.state = 0
   },
+  
 }
 </script>
 

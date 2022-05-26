@@ -3,10 +3,11 @@ import api from "./api"
 const END_POINT = "articles"
 
 export default {
-  articleList() {
+  articleList(page) {
     return api({
       method: "get",
       url: `${END_POINT}/`,
+      params: { page: page }
     })
   },
   detail(articlePk) {

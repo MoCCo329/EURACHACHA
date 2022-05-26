@@ -17,7 +17,7 @@
       </router-link>
     </div>
 
-    <div v-if="intersections.length===0">There are too few movies you like to recommend. Please LIKE more movies</div>
+    <div v-if="intersections.length===0"></div>
     
   </div>
 </template>

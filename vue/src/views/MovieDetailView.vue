@@ -139,6 +139,7 @@ export default {
   },
   created () {
     const moviePk = this.$route.params.moviePk
+    console.log(moviePk)
     this.fetchMovieDetail(moviePk)
     this.fetchMovieDetailRelated(moviePk)
   },
