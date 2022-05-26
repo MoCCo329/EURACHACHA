@@ -28,7 +28,6 @@
       </div>
     </div>
 
-
     <hr>
     <!-- ReleaseDate Related : <br>{{ movieRelatedReleaseDate }} -->
     <div class="my-3 fs-3 fw-bold">ReleaseDate Related</div>
@@ -38,11 +37,17 @@
     >
       <swiper-slide class="bg-black" v-for="movie in movieRelatedReleaseDate" :key="movie.pk">
         <router-link :to="{ name: 'detail', params: { moviePk: movie.pk } }">
-          <div class="card" style="width: 12rem;">
+          <div class="a">
+          <div class="card screen" style="width: 12rem;">
             <img :src="poster_url(movie.poster_path)" class="card-img-top" alt="...">
-            <div class="card-body position-absolute bottom-0 start-0">
-              <p class="card-text text-white">{{ movie.title }}</p>
+            <div class="card-body">
+              <div class="top">{{ movie.title }}</div>
+              <div class="bottom">
+                <i class="fa-solid fa-hourglass-end"> {{ movie.runtime }}</i> min.
+                <div>{{movie.tagline}}</div>
+              </div>
             </div>
+          </div>
           </div>
         </router-link>
       </swiper-slide>
@@ -65,11 +70,17 @@
     >
       <swiper-slide class="bg-black" v-for="movie in movieRelatedGenre" :key="movie.pk">
         <router-link :to="{ name: 'detail', params: { moviePk: movie.pk } }">
-          <div class="card" style="width: 12rem;">
+          <div class="a">
+          <div class="card screen" style="width: 12rem;">
             <img :src="poster_url(movie.poster_path)" class="card-img-top" alt="...">
-            <div class="card-body position-absolute bottom-0 start-0">
-              <p class="card-text text-white">{{ movie.title }}</p>
+            <div class="card-body">
+              <div class="top">{{ movie.title }}</div>
+              <div class="bottom">
+                <i class="fa-solid fa-hourglass-end"> {{ movie.runtime }}</i> min.
+                <div>{{movie.tagline}}</div>
+              </div>
             </div>
+          </div>
           </div>
         </router-link>
       </swiper-slide>
@@ -149,5 +160,90 @@ export default {
 <style>
 .card-detail {
   word-spacing: 3px;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.screen {
+  position: relative;
+  overflow: hidden;
+  height: 285px;
+}
+
+.screen .top {
+  position: absolute;
+  bottom:-350%;
+  /* left:30px; */
+  z-index:2;
+  color:#fff;
+  font-size:20px;
+  font-weight: 900;
+  transition: all .35s;
+}
+
+.screen .bottom {
+  position: absolute;
+  top:100%;
+  /* left:30px; */
+  z-index:2;
+  color:#fff;
+  font-size:14px;
+  transition: all .35s;
+}
+
+.screen:hover .top {
+  bottom: 52%;
+}
+
+.screen:hover .bottom {
+  top: 50%;
+}
+
+.screen::after {
+  content: '';
+  display: block;
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height: 100%;
+  background: rgba(0,0,0,.5);
+  z-index: 1;
+  opacity: 0;
+  transition: all .35s;
+}
+
+.a:hover .screen::after {
+  opacity: 1;
 }
 </style>
