@@ -8,7 +8,7 @@
     
     <div class="d-flex" v-if="state > 2">
       <!-- {{ questions }} -->
-      <div v-if="(state > 2) && (!isFinished)" class="fs-2 text-center">Just a minute..We are choosing carefully<i class="fas fa-spinner fa-pulse"></i></div>
+      <div v-if="!isFinished" class="fs-2 text-center">Just a minute..We are choosing carefully<i class="fas fa-spinner fa-pulse"></i></div>
       <div class="mx-3" v-for="movie in questions" :key="movie.pk">
       <!-- <img :src="poster_url(movie.poster_path)" alt="..."> -->
       <router-link class="contain" :to="{ name: 'detail', params: { moviePk: movie.pk } }">
