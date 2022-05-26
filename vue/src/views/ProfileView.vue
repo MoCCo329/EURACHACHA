@@ -14,7 +14,7 @@
         <swiper-slide class="bg-black" v-for="movie in profile.like_movies" :key="movie.pk">
           <!-- <div class="test">{{ movie }}</div> -->
           <router-link :to="{ name: 'detail', params: { moviePk: movie.id } }">
-            <div class="card" style="width: 12rem;">
+            <div class="card" style="width: 26rem;">
               <img :src="poster_url(movie.poster_path)" class="card-img-top" alt="like movie">
               <div class="card-body position-absolute bottom-0 start-0">
                 <p class="card-text text-white">{{ movie.title }}</p>
@@ -93,9 +93,9 @@ export default {
   data() {
     return {
           swiperOption: { 
-          slidesPerView: 5, 
+          slidesPerView: 1, 
           spaceBetween: 10, 
-          slidesPerGroup: 5,
+          slidesPerGroup: 1,
           loop: true, 
           pagination: { 
               el: '.swiper-pagination', 

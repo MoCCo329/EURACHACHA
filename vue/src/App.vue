@@ -32,6 +32,9 @@ import { mapActions } from "vuex"
     methods: {
       ...mapActions(["fetchCurrentUser"])
     },
+    mounted () {
+      this.fetchCurrentUser()
+    }
   }
 </script>
 
@@ -40,7 +43,7 @@ import { mapActions } from "vuex"
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: 'Vollkorn', serif;
 }
 #app {
   position: relative;
