@@ -6,9 +6,9 @@
     <runtime-q v-if="randomQ[state] === 'runtime'" @runtime="getRuntime" @changeQ="changeQ"></runtime-q>
 
     
-    <answer class="d-flex" v-if="state > 2">
+    <div class="d-flex" v-if="state > 2">
       <!-- {{ questions }} -->
-      <div class="fs-2 hideAfter5Sec">Just a minute..We are choosing carefully</div>
+      <div v-if="(state > 2) && (!isFinished)" class="fs-2 text-center">Just a minute..We are choosing carefully<i class="fas fa-spinner fa-pulse"></i></div>
       <div class="mx-3" v-for="movie in questions" :key="movie.pk">
       <!-- <img :src="poster_url(movie.poster_path)" alt="..."> -->
       <router-link class="contain" :to="{ name: 'detail', params: { moviePk: movie.pk } }">
@@ -25,7 +25,7 @@
       
     </div>
     <!-- <div class="fs-2">Here's Our Recommendations. Hope you enjoy it!</div>  -->
-    </answer>
+    </div>
 
     <button class="btn btn-light my-5 back-btn" @click="goBack">Back</button>
 
@@ -63,6 +63,9 @@ export default {
       .sort(() => Math.random() - 0.5)
       return randomList
     },
+    isFinished () {
+      return !!this.questions
+    }
   },
   methods: {
     ...mapActions(["fetchQuestions"]),
@@ -105,15 +108,18 @@ export default {
   },
   created () {
     this.state = 0
-    this.genre = String(this.getRandomInt(1, 7))
-    this.releaseDate = String(this.getRandomInt(1, 6))
+    this.genre = String(this.getRandomInt(1, 6))
+    this.releaseDate = String(this.getRandomInt(1, 5))
     this.runtime = String(this.getRandomInt(1, 5))
   },
+  destroyed () {
+    this.fetchQuestions({ genre: "exit" })
+  }
 }
 </script>
 
 <style>
-.hideAfter5Sec {
+/* .hideAfter5Sec {
   animation: hideAnimation 0s ease-in 3s;
   animation-fill-mode: forwards;
 }
@@ -124,7 +130,7 @@ export default {
     width: 0;
     height: 0;
   }
-}
+} */
 
 .back-btn {
   right: 0;

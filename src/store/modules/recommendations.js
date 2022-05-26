@@ -3,7 +3,7 @@ import recommendations from "@/api/recommendations"
 
 export default {
   state: {
-    intersections: [],
+    intersections: "yet",
     questions: [],
   },
 
@@ -18,7 +18,8 @@ export default {
   },
 
   actions: {
-    fetchIntersections({ commit }) {
+    fetchIntersections({ commit }, data) {
+      if (data=="reset") return commit("SET_INTERSECTIONS", "yet")
       recommendations
         .intersections()
         .then((res) => {
@@ -34,6 +35,8 @@ export default {
     },
 
     fetchQuestions({ commit }, { genre, release_date, runtime }) {
+      if (genre === "exit") return commit("SET_QUESTIONS", "")
+      
       const body = { genre, release_date, runtime }
       recommendations
         .questions(body)

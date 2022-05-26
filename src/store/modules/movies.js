@@ -154,6 +154,7 @@ export default {
     },
     
     fetchSearch({ commit }, input) {
+      if (input==="") return commit("SET_SEARCH_RESPONSE", "")
       const data = { query: input }
       movies
         .search(data)

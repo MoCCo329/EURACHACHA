@@ -8,6 +8,8 @@
       </div>
     </div>
     
+    <div class="fs-2 text-center" v-if="isSearching">Searching...<i class="fas fa-spinner fa-pulse"></i></div>
+
     <div class="container">
       <div class="row">
         <div class="d-flex justify-content-center col-12 col-md-6 col-lg-4 col-xl-3" v-for='movie in searchResponse' :key="movie.id">
@@ -39,16 +41,23 @@ export default {
   data () {
     return {
       input: "",
+      isSearch: false,
     }
   },
   computed: {
-    ...mapGetters(["searchResponse"])
+    ...mapGetters(["searchResponse"]),
+    isSearching () {
+      if (this.searchResponse) return false
+      return this.isSearch
+    }
   },
   methods: {
     ...mapActions(["fetchSearch"]),
     clickSearch () {
+      this.fetchSearch("")
       this.fetchSearch(this.input)
       this.input = ""
+      this.isSearch = true
     },
     poster_url(poster_path) {
       return `https://image.tmdb.org/t/p/w500` + poster_path

@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex flex-column justify-content-center align-items-center">
-    <div class="d-flex">
+    <div class="d-flex" v-if="intersections!=='yet'">
       <div class="mx-5" v-for="movie in intersections" :key="movie.pk">
         <!-- <img :src="poster_url(movie.poster_path)" alt="..."> -->
         <router-link class="contain" :to="{ name: 'detail', params: { moviePk: movie.pk } }">
@@ -16,7 +16,8 @@
         </router-link>
       </div>
     </div>
-    <div class="info-message text-center" v-if="intersections.length===0">좋아요나 더 누르고 와</div>
+    <div class="info-message text-center" v-if="isFinished && intersections.length===0">좋아요나 더 누르고 와</div>
+    <div class="fs-2 text-center" v-if="!isFinished">Just a minute..We are choosing carefully<i class="fas fa-spinner fa-pulse"></i></div>
     <button class="back-btn btn btn-light my-5" @click="goBack">Back</button>
   </div>
 </template>
@@ -27,7 +28,10 @@ import { mapGetters, mapActions } from "vuex"
 export default {
   name: "IntersectionsAlgo",
   computed: {
-    ...mapGetters(["intersections"])
+    ...mapGetters(["intersections"]),
+    isFinished () {
+      return this.intersections !== "yet"
+    }
   },
   methods: {
     ...mapActions(["fetchIntersections"]),
@@ -40,6 +44,9 @@ export default {
   },
   created () {
     this.fetchIntersections()
+  },
+  destroyed () {
+    this.fetchIntersections("reset")
   }
 }
 </script>
