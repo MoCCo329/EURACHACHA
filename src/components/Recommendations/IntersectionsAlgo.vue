@@ -17,7 +17,7 @@
       </div>
     </div>
     <div class="info-message text-center" v-if="intersections.length===0">좋아요나 더 누르고 와</div>
-    <button class="back-btn btn btn-primary my-5" @click="goBack">Back</button>
+    <button class="back-btn btn btn-light my-5" @click="goBack">Back</button>
   </div>
 </template>
 

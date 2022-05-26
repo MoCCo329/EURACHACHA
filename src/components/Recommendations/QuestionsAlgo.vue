@@ -27,7 +27,7 @@
     <!-- <div class="fs-2">Here's Our Recommendations. Hope you enjoy it!</div>  -->
     </answer>
 
-    <button class="btn btn-primary my-5 back-btn" @click="goBack">Back</button>
+    <button class="btn btn-light my-5 back-btn" @click="goBack">Back</button>
 
   </div>
 </template>
