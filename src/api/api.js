@@ -1,5 +1,5 @@
 import axios from "axios"
-const HOST = "http://localhost:8000/api/v1/"  // "https://dh96s.link/api/v1/" 
+const HOST = "https://dh96s.link/api/v1/" // "http://localhost:8000/api/v1/"
 
 export const api = axios.create({
   baseURL: HOST,
