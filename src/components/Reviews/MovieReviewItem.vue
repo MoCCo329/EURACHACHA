@@ -98,7 +98,10 @@ export default {
       this.payload.content = this.temp.content
       this.payload.score = this.temp.score
       this.content = {}
-    }
+    },
+    time (date) {
+      return `${date.slice(0, 10)}  ${date.slice(11,19)}`
+    },
   },
   filters: {
     time (date) {

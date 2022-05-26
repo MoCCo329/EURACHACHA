@@ -9,13 +9,13 @@
         {{ isUpdated }}
         created at : {{ article.created_at | time }}
       </span>
-      <span class="article-detail">
+      <div class="article-detail">
         <i class='bx bx-message-square-dots' ></i> {{ comment_count }}
         <i class="fa-solid fa-heart"></i> {{ like_count }}
         <router-link class="router-link" :to="{ name: 'profile', params: { username: article.user.username } }">
           <i class='bx bx-user' ></i> {{ article.user.username }}
         </router-link>
-      </span>
+      </div>
     </div>
 
 
@@ -105,7 +105,7 @@ export default {
   display: flex;
   justify-content: space-between;
   /* overflow: hidden; */
-  height: 5rem;
+  height: auto;
 }
 .article-detail-head .router-link {
   text-decoration: None;
