@@ -12,7 +12,7 @@
         <div id="reviewHelp" class="form-text">Don't forget to give score. Thank you for your valuable review.</div>
       </div>
     </form>
-    <div class="mb-5" v-if="!isValid">Sorry, You can write only one review.</div>
+    <div class="mb-5" v-if="!isValid">Sorry, You can write only one review at each movie.</div>
   </div>
 </template>
 

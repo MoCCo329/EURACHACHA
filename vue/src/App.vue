@@ -1,20 +1,18 @@
 <template>
   <div id="app">
-    <div class="background" :style="{'background-image': backgroundImage}">
-      <div class="sidebar">
-        <div class="logo">
-          <img class="logo-img" src="./assets/logo.png">
-        </div>
-        <!-- <i id="btn" class="bx bx-menu" ></i> -->
-        <nav-bar class="nav-list"></nav-bar>
+    <div class="sidebar">
+      <div class="logo">
+        <img class="logo-img" src="./assets/logo.png">
       </div>
+      <!-- <i id="btn" class="bx bx-menu" ></i> -->
+      <nav-bar class="nav-list"></nav-bar>
+    </div>
 
-      <div class="container">
-        <div class="row">
-          <div class="col-2"></div>
-          <div class="router-view col-10">
-            <router-view></router-view>
-          </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="router-view col-10">
+          <router-view></router-view>
         </div>
       </div>
     </div>
@@ -23,14 +21,13 @@
 
 <script>
 import NavBar from "./components/NavBar.vue"
-import { mapActions, mapGetters } from "vuex"
+import { mapActions } from "vuex"
 
 
   export default {
     name: "App",
     components: { NavBar },
     computed: {
-      ...mapGetters(["backgroundImage"])
     },
     methods: {
       ...mapActions(["fetchCurrentUser"])
@@ -53,15 +50,6 @@ import { mapActions, mapGetters } from "vuex"
   overflow: hidden;
   color: white;
 }
-#app .background {
-  background-color: black;
-  /* background-image: fixed; */
-  background-repeat: no-repeat;
-  background-size: 60%;
-  /* background-size: cover; */
-  background-position: 60% 0%;
-  /* filter: blur(5px); */
-}
 .sidebar {
   position: fixed;
   top: 0;
@@ -78,5 +66,8 @@ import { mapActions, mapGetters } from "vuex"
 }
 .sidebar .logo .logo-img {
   width: 100%;
+}
+.container {
+  background-color: black;
 }
 </style>

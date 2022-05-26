@@ -27,6 +27,8 @@
     <!-- <div class="fs-2">Here's Our Recommendations. Hope you enjoy it!</div>  -->
     </answer>
 
+    <button class="btn btn-primary" @click="goBack">Back</button>
+
   </div>
 </template>
 
@@ -90,9 +92,15 @@ export default {
     getRandomInt (min, max) {
       return Math.floor(Math.random() * (max - min)) + min
     },
-    poster_url(poster_path) {
+    poster_url (poster_path) {
       return `https://image.tmdb.org/t/p/w500` + poster_path
     },
+    goBack () {
+      this.state = null
+      this.genre = null
+      this.releaseDate = null
+      this.runtime = null
+    }
   },
   created () {
     this.state = 0

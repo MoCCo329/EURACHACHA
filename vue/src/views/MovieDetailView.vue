@@ -1,15 +1,6 @@
 <template>
-  <!-- <div class="main-div" :style="{ background: bg }"> -->
   <div>
     <div class="my-3 fs-3 fw-bold">MovieDetail</div>
-    <!-- <div>{{ movieDetail }}</div> -->
-    <!-- <img :src="poster_url(movieDetail.poster_path)" alt="...">  -->
-    <!-- <img :src="poster_url(movieDetail.backdrop_path)" alt="..."> -->
-    <!-- <div>{{movieDetail.title}}</div>
-    <div>{{movieDetail.release_date}}</div>
-    <div>{{movieDetail.overview}}</div>
-    <div>{{movieDetail.runtime}}</div>
-    <div>{{movieDetail.vote_average}}</div> -->
     <div class="card mb-3 bg-black ms-5" style="max-width: 900px;">
       <div class="row g-0">
         <div class="col-md-4">
@@ -17,20 +8,19 @@
         </div>
         <div class="col-md-8">
           <div class="card-body mt-5 ms-3">
-            <h5 class="card-title fs-1 mb-3">{{movieDetail.title}}</h5>
-            <p class="card-text">{{movieDetail.overview}}</p>
+            <h5 class="card-title fs-1 mb-3">{{ movieDetail.title }}</h5>
+            <p class="card-text">{{ movieDetail.overview }}</p>
             <p class="card-text">
               Genre:
               <span v-for="genre in movieDetail.genres" :key="genre.name">
-                {{genre.name}}
+                {{ genre.name }}
               </span>
             </p>
             <div class="card-detail">
               <p class="card-text"><small>
-                <p><i class="fa-solid fa-calendar"> {{movieDetail.release_date}}</i> </p> 
-                <i class="fa-solid fa-hourglass-end"> {{movieDetail.runtime}} min</i>    
+                <p><i class="fa-solid fa-calendar"> {{ movieDetail.release_date }}</i> </p> 
+                <i class="fa-solid fa-hourglass-end"> {{ movieDetail.runtime }} min</i>    
               </small></p>
-              <!-- 사용자가 누르면 하트 채워지고 비워지고 해야함 -->
               <p><i class="fa-solid fa-heart" @click="doLikeMovie"></i> {{ like_count }}</p>
             </div>
           </div>
@@ -95,7 +85,7 @@
 
     <movie-review-list></movie-review-list>
     <div class="d-flex justify-content-end">
-      <router-link :to="{ name: 'home' }"><button class="btn btn-primary my-3">back</button></router-link>
+      <router-link :to="{ name: 'home' }"><button class="btn btn-primary my-3">Back</button></router-link>
     </div>
   </div>
 </template>
@@ -115,16 +105,13 @@ export default {
     SwiperSlide,
   },
   computed: {
-    ...mapGetters(["movieDetail", "movieRelatedReleaseDate", "movieRelatedGenre", "backgroundImage"]),
+    ...mapGetters(["movieDetail", "movieRelatedReleaseDate", "movieRelatedGenre"]),
     like_count () {
       return this.movieDetail.like_users?.length
     },
-    backdropPath () {
-      return this.movieDetail.backdrop_path
-    },
   },
   methods: {
-    ...mapActions(["fetchMovieDetail", "fetchMovieDetailRelated", "likeMovie", "fetchBackgroundImage"]),
+    ...mapActions(["fetchMovieDetail", "fetchMovieDetailRelated", "likeMovie"]),
     doLikeMovie () {
       return this.likeMovie(this.$route.params.moviePk)
     },
@@ -146,7 +133,7 @@ export default {
           navigation: { 
             nextEl: '.swiper-button-next', 
             prevEl: '.swiper-button-prev' 
-          } 
+          },
       },
     }
   },
@@ -154,22 +141,6 @@ export default {
     const moviePk = this.$route.params.moviePk
     this.fetchMovieDetail(moviePk)
     this.fetchMovieDetailRelated(moviePk)
-    const backdropPath = this.movieDetail.backdrop_path
-    console.log(backdropPath)
-    this.fetchBackgroundImage(`url(https://image.tmdb.org/t/p/w500${backdropPath})`)
-  },
-  // beforemounted () {
-  //   const backdropPath = this.movieDetail.backdrop_path
-  //   console.log(backdropPath)
-  //   this.fetchBackgroundImage(`url(https://image.tmdb.org/t/p/w500${backdropPath})`)
-  // },
-  //   updated () {
-  //   if (!this.backgroundImage && this.backdropPath) {
-  //     this.fetchBackgroundImage(`url(https://image.tmdb.org/t/p/w500${this.backdropPath})`)
-  //   }
-  // },
-  destroyed () {
-    this.fetchBackgroundImage("")
   },
 }
 </script>

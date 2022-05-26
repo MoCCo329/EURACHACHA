@@ -14,7 +14,7 @@
       <div class="comment-detail">
         <span>
           {{ isUpdated }}
-          created at : {{ comment.created_at }}
+          created at : {{ comment.created_at | time }}
         </span>
       </div>
 
@@ -77,6 +77,9 @@ export default {
       this.payload.content = this.temp
       this.content = ""
     },
+    time (date) {
+      return `${date.slice(0, 10)}  ${date.slice(11,19)}`
+    }
   },
   filters: {
     time (date) {

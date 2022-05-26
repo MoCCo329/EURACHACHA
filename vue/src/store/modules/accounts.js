@@ -68,7 +68,7 @@ export default {
           // alert("성공적으로 로그아웃 되었습니다.")
           router.push({ name: "home" })  // 원래 있던 페이지에서 로그아웃만 된 상태로 안되려나?
         })
-        .catch((err) => console.error(err))
+        .catch((err) => console.error(err.response.data))
     },
 
     fetchCurrentUser({ commit, getters }) {  // 현재 유저 저장
@@ -77,6 +77,7 @@ export default {
           .currentUser()
           .then((res) => {
             console.log("fetchCurrentUser", res.data)
+            console.log(localStorage.token)
             commit("SET_CURRENT_USER", res.data)
           })
           .catch((err) => {
