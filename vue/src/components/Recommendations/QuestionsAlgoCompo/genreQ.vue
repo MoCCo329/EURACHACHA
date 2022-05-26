@@ -1,11 +1,9 @@
 <template>
-  <div>
-    <div>
-      <p class="fs-2">{{ genreQ[state] }}</p> 
-      <div class="d-flex justify-content-around mt-5">
-        <button class="btn btn-primary" @click="emitAns(state, true)">Yes</button>
-        <button class="btn btn-danger" @click="emitAns(state, false)">No</button>
-      </div>
+  <div class="questions-box">
+    <p class="fs-2 text-center">{{ genreQ[state] }}</p> 
+    <div class="d-flex justify-content-around mt-5 choice-questions">
+      <button class="btn btn-primary" @click="emitAns(state, true)">Yes</button>
+      <button class="btn btn-danger" @click="emitAns(state, false)">No</button>
     </div>
   </div>
 </template>
@@ -26,16 +24,8 @@ export default {
     }
   },
   computed: {
-    // randomQ () {
-    //   return this.genRandomInt()
-    // }
   },
   methods: {
-    // getRandomInt () {
-    //   const min = Math.ceil(0)
-    //   const max = Math.floor(6)
-    //   return Math.floor(Math.random() * (max - min)) + min
-    // },
     emitAns (idx, ans) {
       if (idx === 0) {
         if (ans) {
@@ -73,5 +63,10 @@ export default {
 </script>
 
 <style>
-
+.choice-questions {
+  width: 850px;
+}
+.questions-box {
+  min-width: 850px
+}
 </style>

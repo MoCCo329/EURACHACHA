@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="d-flex justify-content-center align-items-center flex-column">
 
     <genre-q v-if="randomQ[state] === 'genre'" @genre="getGenre" @changeQ="changeQ"></genre-q>
     <release-date-q v-if="randomQ[state] === 'releaseDate'" @releaseDate="getReleaseDate" @changeQ="changeQ"></release-date-q>
@@ -27,7 +27,7 @@
     <!-- <div class="fs-2">Here's Our Recommendations. Hope you enjoy it!</div>  -->
     </answer>
 
-    <button class="btn btn-primary" @click="goBack">Back</button>
+    <button class="btn btn-primary my-5 back-btn" @click="goBack">Back</button>
 
   </div>
 </template>
@@ -100,6 +100,7 @@ export default {
       this.genre = null
       this.releaseDate = null
       this.runtime = null
+      this.$emit("reset")
     }
   },
   created () {
@@ -108,9 +109,6 @@ export default {
     this.releaseDate = String(this.getRandomInt(1, 6))
     this.runtime = String(this.getRandomInt(1, 5))
   },
-  // destroyed () {
-  //   this.state = 0,
-  // },
 }
 </script>
 
@@ -126,5 +124,9 @@ export default {
     width: 0;
     height: 0;
   }
+}
+
+.back-btn {
+  right: 0;
 }
 </style>

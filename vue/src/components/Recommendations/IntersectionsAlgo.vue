@@ -1,24 +1,23 @@
 <template>
-  <div class="d-flex">
-    <!-- {{ intersections }} -->
-    
-    <div class="mx-5" v-for="movie in intersections" :key="movie.pk">
-      <!-- <img :src="poster_url(movie.poster_path)" alt="..."> -->
-      <router-link class="contain" :to="{ name: 'detail', params: { moviePk: movie.pk } }">
-        <div class="front card-front ca" style="width: 12rem;">
-        </div>
-
-        <div class="card back ca" style="width: 12rem;">
-          <img :src="poster_url(movie.poster_path)" class="card-img-top" alt="...">
-          <div class="card-body position-absolute bottom-0 start-0">
-            <p class="card-text text-white">{{ movie.title }}</p>
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <div class="d-flex">
+      <div class="mx-5" v-for="movie in intersections" :key="movie.pk">
+        <!-- <img :src="poster_url(movie.poster_path)" alt="..."> -->
+        <router-link class="contain" :to="{ name: 'detail', params: { moviePk: movie.pk } }">
+          <div class="front card-front ca" style="width: 12rem;">
           </div>
-        </div>
-      </router-link>
-    </div>
 
-    <div v-if="intersections.length===0"></div>
-    
+          <div class="card back ca" style="width: 12rem;">
+            <img :src="poster_url(movie.poster_path)" class="card-img-top" alt="...">
+            <div class="card-body position-absolute bottom-0 start-0">
+              <p class="card-text text-white">{{ movie.title }}</p>
+            </div>
+          </div>
+        </router-link>
+      </div>
+    </div>
+    <div class="info-message text-center" v-if="intersections.length===0">좋아요나 더 누르고 와</div>
+    <button class="back-btn btn btn-primary my-5" @click="goBack">Back</button>
   </div>
 </template>
 
@@ -34,6 +33,9 @@ export default {
     ...mapActions(["fetchIntersections"]),
     poster_url(poster_path) {
       return `https://image.tmdb.org/t/p/w500` + poster_path
+    },
+    goBack () {
+      this.$emit("reset")
     }
   },
   created () {
@@ -43,6 +45,14 @@ export default {
 </script>
 
 <style>
+.info-message {
+  margin-top: 3rem;
+}
+
+.back-btn {
+  max-width: 70px;
+}
+
 .card-front {
   width: 200px;
   height: 300px;

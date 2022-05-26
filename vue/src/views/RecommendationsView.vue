@@ -9,12 +9,12 @@
     <div style="height: 100px"></div>
     <div class="my-container mx-auto d-flex justify-content-center align-items-center flex-column ">
     <img src="../assets/main.gif" alt="recommendation-img" class="main-img">
-    <button v-show="clicked" class="reco-btn btn btn-light my-5 btn-lg" @click="[selectIntersections(), hide()]"> 1 : Based on Your Likes</button>
-    <button v-show="clicked" class="reco-btn btn btn-light btn-lg" @click="[selectQuestions(), hide()]"> 2 : Based on a few Questions</button>
+    <button v-show="isclicked" class="reco-btn btn btn-light my-5 btn-lg" @click="[selectIntersections(), hide()]"> 1 : Based on Your Likes</button>
+    <button v-show="isclicked" class="reco-btn btn btn-light btn-lg" @click="[selectQuestions(), hide()]"> 2 : Based on a few Questions</button>
     
     <div class="my-3">
-      <intersections-algo v-if="selectedAlgo === 'intersections'"></intersections-algo>
-      <questions-algo v-if="selectedAlgo === 'questions'"></questions-algo>
+      <intersections-algo v-if="selectedAlgo === 'intersections'" @reset="this.restart"></intersections-algo>
+      <questions-algo v-if="selectedAlgo === 'questions'" @reset="this.restart"></questions-algo>
     </div>
   </div>
   </div>
@@ -35,7 +35,12 @@ export default {
   data () {
     return {
       selectedAlgo: "",
-      clicked: true
+      clicked: true,
+    }
+  },
+  computed: {
+    isclicked () {
+      return this.clicked
     }
   },
   methods: {
@@ -51,7 +56,15 @@ export default {
     },
     hide() {
       this.clicked = !this.clicked
+    },
+    restart() {
+      this.clicked = true
+      this.selectedAlgo = ""
     }
+  },
+  created () {
+    this.clicked = true
+    this.selectedAlgo = ""
   }
 }
 </script>

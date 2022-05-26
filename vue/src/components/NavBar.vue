@@ -79,7 +79,7 @@ export default {
   padding: 0;
 }
 .nav-list li {
-  height: 50px;
+  height: 60px;
   width: 100%;
   list-style: none;
 }

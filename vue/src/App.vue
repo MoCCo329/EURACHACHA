@@ -2,7 +2,7 @@
   <div id="app">
     <div class="sidebar">
       <div class="logo">
-        <img class="logo-img" src="./assets/logo.png">
+        <img class="logo-img mb-3" src="./assets/logo.png">
       </div>
       <!-- <i id="btn" class="bx bx-menu" ></i> -->
       <nav-bar class="nav-list"></nav-bar>
