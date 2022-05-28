@@ -7,7 +7,7 @@
 - 주제: 추천 알고리즘을 적용한 영화 커뮤니티 사이트
 - 기간: 05.20(금) ~ 05.26 (목)
 - 발표: 05.27 (금, 종강식날)
-- 조원: 김도현 FE, CSS styling([깃헙](https://github.com/MoCCo329)), 이동환 BE, CSS styling([깃헙](https://github.com/onghwand))
+- 조원: 김도현[[깃헙](https://github.com/MoCCo329/fresh-tomatoes-vue)] FE, CSS styling, 이동환[[깃헙](https://github.com/onghwand/fresh-tomatoes-django)] BE, CSS styling
 - 사용기술스택:
   - 협업, 버전관리 : <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white"> <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white">
   - 언어 : <img src="https://img.shields.io/badge/python-3776AB?style=for-the-badge&logo=python&logoColor=white"> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white"> <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white">
