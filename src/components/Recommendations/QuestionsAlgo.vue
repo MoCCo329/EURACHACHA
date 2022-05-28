@@ -133,7 +133,7 @@ export default {
   }
 } */
 
-.back-btn {
+/* .back-btn {
   right: 0;
-}
+} */
 </style>
