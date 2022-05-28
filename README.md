@@ -64,7 +64,7 @@
 
 
 
-## 4. :scroll: Components
+## 4. :file_cabinet: Components
 
 - Component Schema
 
@@ -91,7 +91,7 @@
 
 
 
-## 6. Data Flow(Search 기능 예시)
+## 6. :fried_egg: Data Flow(Search 기능 예시)
 
 - 프로젝트 규모상 계속해서 관리되는 영화정보 DB를 만들기 어렵기 때문에, TMDB 영화정보 API를 통해 이 문제를 해결한다.
 
@@ -101,7 +101,7 @@
 
 
 
-## 7. 결과 및 배포
+## 7. :film_strip: 결과 및 배포
 
 - Home
 
@@ -122,8 +122,6 @@
   ![image-20220528180826614](README.assets/image-20220528180826614.png)
 
   ![image-20220528180858306](README.assets/image-20220528180858306.png)
-
-  ![image-20220528181109219](README.assets/image-20220528181109219.png
 
 - Article
 
