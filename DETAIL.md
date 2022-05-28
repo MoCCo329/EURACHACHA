@@ -4,8 +4,8 @@
 
 - [API URL](./files/API.xlsx)
 - [발표 PPT](./files/eurachacha.pptx)
-- [질문 리스트](./files/질문 List.md)
-- [추천 로직 후보](./files/추천 로직 후보.md)
+- [질문 리스트](./files/질문List.md)
+- [추천 로직 후보](./files/추천로직후보.md)
 - [ERD](https://lucid.app/lucidchart/389973c1-480e-4350-9fbd-2a5bc768b6b7/edit?invitationId=inv_f3bcf062-9fed-4749-826d-77c058f042b1&page=0_0#)
 
 
