@@ -97,7 +97,7 @@
 
 
 
-## 6. :fried_egg: Data Flow(Search 기능 예시)
+## 6. :gear: Data Flow(Search 기능 예시)
 
 - 프로젝트 규모상 계속해서 관리되는 영화정보 DB를 만들기 어렵기 때문에, TMDB 영화정보 API를 통해 이 문제를 해결한다.
 
