@@ -16,7 +16,7 @@
     </div>
     <hr>
     <ul class="article-ul">
-      <li class="article-li" v-for="article in articles" :key="article.pk">
+      <li id="article-table" class="article-li" v-for="article in articlesInPage" :key="article.pk">
         <div class="article">
           <router-link class="router-link font-k" :to="{ name: 'article', params: { articlePk: article.pk } }">
             {{ article.title }}<br>{{ article.created_at | time }}
@@ -39,23 +39,28 @@
       </router-link>
     </div>
 
-    <!-- <nav aria-label="Page navigation example">
-      <ul class="pagination">
+
+    <nav aria-label="Page navigation example" class="d-flex justify-content-center flex-column">
+      <div class="currentPage align-self-center my-3">- {{ currentPage }} -</div>
+      <ul class="pagination align-self-center">
         <li class="page-item">
-          <a class="page-link" href="" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
+          <a class="page-link" aria-label="Previous" @click="pageChange(currentPage - 3)">
+            <span style="color: black;">&laquo;</span>
           </a>
         </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item" v-show="(currentPage==lastPage)&&(lastPage>2)" @click="pageChange(currentPage - 2)"><a class="page-link" style="color: black;">{{ currentPage - 2 }}</a></li>
+        <li class="page-item" v-show="(currentPage!==1)" @click="pageChange(currentPage - 1)"><a class="page-link" style="color: black;">{{ currentPage - 1 }}</a></li>
+        <li class="page-item" @click="pageChange(currentPage)"><a class="page-link" href="#" style="color: black;">{{ currentPage }}</a></li>
+        <li class="page-item" v-show="(currentPage + 1 <= lastPage)" @click="pageChange(currentPage + 1)"><a class="page-link" style="color: black;">{{ currentPage + 1 }}</a></li>
+        <li class="page-item" v-show="(currentPage===1)&&(lastPage>2)" @click="pageChange(currentPage + 2)"><a class="page-link" style="color: black;">{{ currentPage + 2 }}</a></li>
         <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
+          <a class="page-link" aria-label="Next" @click="pageChange(currentPage + 3)">
+            <span style="color: black;">&raquo;</span>
           </a>
         </li>
       </ul>
-    </nav> -->
+    </nav>
+
   </div>
 </template>
 
@@ -68,14 +73,32 @@ export default {
   components: {
     // LoginModal,
   },
+  data () {
+    return {
+      currentPage: 1,
+    }
+  },
   computed: {
     ...mapGetters(["articles"]),
     article_count () {
       return this.articles.length
-    }
+    },
+    lastPage () {
+      if (this.articles.length === 0) return 1
+      return parseInt((this.articles.length + 9) / 10)
+    },
+    articlesInPage () {
+      const newArticles = this.articles.slice((this.currentPage - 1)*10, this.currentPage*10)
+      return newArticles
+    },
   },
   methods: {
-    ...mapActions(['fetchArticles'])
+    ...mapActions(['fetchArticles']),
+    pageChange (nextPage) {
+      if (nextPage <= 0) nextPage = 1
+      if (nextPage > this.lastPage) nextPage = this.lastPage
+      this.currentPage = nextPage
+    }
   },
   filters: {
     time (date) {
@@ -84,6 +107,7 @@ export default {
   },
   created () {
     this.fetchArticles()
+    // this.currentPage = this.$route.params.page
   },
 }
 </script>
@@ -148,5 +172,14 @@ export default {
   text-decoration: None;
   color: white;
   font-size: 1rem;
+}
+.currentPage {
+  max-width: 100px;
+}
+.pagination {
+  color: black;
+}
+.pagination-item {
+  
 }
 </style>
